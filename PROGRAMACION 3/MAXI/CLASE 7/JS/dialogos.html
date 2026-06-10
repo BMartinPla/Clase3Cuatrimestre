@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+   <dialog id="my-dialog">
+        <p>Esto es un dialogo.</p>
+   </dialog>
+    <button id="close-dialog">Close Dialog</button>
+    <button id="open-dialog">Open Dialog</button>
+    <button id="open-modal">Open Modal Dialog</button>
+  <script>
+    const dialog = document.getElementById('my-dialog');
+    const openButton = document.getElementById('open-dialog');
+    const closeButton = document.getElementById('close-dialog');
+    const modalButton = document.getElementById('open-modal');
+
+    openButton.addEventListener('click', () => {
+      dialog.show();
+    });
+
+    closeButton.addEventListener('click', () => {
+      dialog.close();
+    });
+
+    modalButton.addEventListener('click', () => {
+      dialog.showModal();
+    });
+  </script>
+</body>
+
+</html>

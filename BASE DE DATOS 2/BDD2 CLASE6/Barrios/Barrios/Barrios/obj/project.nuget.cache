@@ -1,0 +1,19 @@
+{
+  "version": 2,
+  "dgSpecHash": "aidwY7ctI8c=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\braian.pla\\source\\repos\\Barrios\\Barrios\\Barrios.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\braian.pla\\.nuget\\packages\\microsoft.data.sqlite\\10.0.7\\microsoft.data.sqlite.10.0.7.nupkg.sha512",
+    "C:\\Users\\braian.pla\\.nuget\\packages\\microsoft.data.sqlite.core\\10.0.7\\microsoft.data.sqlite.core.10.0.7.nupkg.sha512",
+    "C:\\Users\\braian.pla\\.nuget\\packages\\sqlitepclraw.bundle_e_sqlite3\\2.1.11\\sqlitepclraw.bundle_e_sqlite3.2.1.11.nupkg.sha512",
+    "C:\\Users\\braian.pla\\.nuget\\packages\\sqlitepclraw.core\\2.1.11\\sqlitepclraw.core.2.1.11.nupkg.sha512",
+    "C:\\Users\\braian.pla\\.nuget\\packages\\sqlitepclraw.lib.e_sqlite3\\2.1.11\\sqlitepclraw.lib.e_sqlite3.2.1.11.nupkg.sha512",
+    "C:\\Users\\braian.pla\\.nuget\\packages\\sqlitepclraw.provider.e_sqlite3\\2.1.11\\sqlitepclraw.provider.e_sqlite3.2.1.11.nupkg.sha512",
+    "C:\\Users\\braian.pla\\.nuget\\packages\\system.io.pipelines\\10.0.7\\system.io.pipelines.10.0.7.nupkg.sha512",
+    "C:\\Users\\braian.pla\\.nuget\\packages\\system.memory\\4.5.3\\system.memory.4.5.3.nupkg.sha512",
+    "C:\\Users\\braian.pla\\.nuget\\packages\\system.text.encodings.web\\10.0.7\\system.text.encodings.web.10.0.7.nupkg.sha512",
+    "C:\\Users\\braian.pla\\.nuget\\packages\\system.text.json\\10.0.7\\system.text.json.10.0.7.nupkg.sha512"
+  ],
+  "logs": []
+}

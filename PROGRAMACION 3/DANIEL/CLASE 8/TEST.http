@@ -1,0 +1,35 @@
+### Alumno x Id
+GET http://localhost:3000/Alumnos?id=1063
+
+### Busca un id
+GET http://localhost:3000/Alumnos/1063
+
+
+### Agrega un Alumno
+
+POST http://localhost:3000/Alumnos
+Content-Type: application/json
+
+{
+    "apellido": "Gomez",
+    "nombre": "Juan",
+    "dni": "12345678",
+    "nro_legajo": "L1234",
+    "fecha_nacimiento": "2000-01-01",
+    "sexo": "M",
+    "telefono": "549112345678",
+    "mail": "juan.gomez@mail.com",
+    "direccion": "Calle Falsa 123",
+    "cod_postal": "1000",
+    "estado": "ACT"
+}
+
+### Modifica un Alumno
+PATCH http://localhost:3000/Alumnos
+Content-Type: application/json
+
+{
+    "nro_alumno": 1063,
+    "apellido": "Pla",
+    "nombre": "Braian"
+}

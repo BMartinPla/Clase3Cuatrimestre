@@ -1,0 +1,33 @@
+/home/juan/desa/LibPersona/bin/Debug/net8.0/LibPersona.deps.json
+/home/juan/desa/LibPersona/bin/Debug/net8.0/LibPersona.dll
+/home/juan/desa/LibPersona/bin/Debug/net8.0/LibPersona.pdb
+/home/juan/desa/LibPersona/obj/Debug/net8.0/LibPersona.GeneratedMSBuildEditorConfig.editorconfig
+/home/juan/desa/LibPersona/obj/Debug/net8.0/LibPersona.AssemblyInfoInputs.cache
+/home/juan/desa/LibPersona/obj/Debug/net8.0/LibPersona.AssemblyInfo.cs
+/home/juan/desa/LibPersona/obj/Debug/net8.0/LibPersona.csproj.CoreCompileInputs.cache
+/home/juan/desa/LibPersona/obj/Debug/net8.0/LibPersona.dll
+/home/juan/desa/LibPersona/obj/Debug/net8.0/refint/LibPersona.dll
+/home/juan/desa/LibPersona/obj/Debug/net8.0/LibPersona.pdb
+/home/juan/desa/LibPersona/obj/Debug/net8.0/ref/LibPersona.dll
+C:\Users\jarce\Desktop\LibPersona\bin\Debug\net8.0\LibPersona.deps.json
+C:\Users\jarce\Desktop\LibPersona\bin\Debug\net8.0\LibPersona.dll
+C:\Users\jarce\Desktop\LibPersona\bin\Debug\net8.0\LibPersona.pdb
+C:\Users\jarce\Desktop\LibPersona\obj\Debug\net8.0\LibPersona.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\jarce\Desktop\LibPersona\obj\Debug\net8.0\LibPersona.AssemblyInfoInputs.cache
+C:\Users\jarce\Desktop\LibPersona\obj\Debug\net8.0\LibPersona.AssemblyInfo.cs
+C:\Users\jarce\Desktop\LibPersona\obj\Debug\net8.0\LibPersona.csproj.CoreCompileInputs.cache
+C:\Users\jarce\Desktop\LibPersona\obj\Debug\net8.0\LibPersona.dll
+C:\Users\jarce\Desktop\LibPersona\obj\Debug\net8.0\refint\LibPersona.dll
+C:\Users\jarce\Desktop\LibPersona\obj\Debug\net8.0\LibPersona.pdb
+C:\Users\jarce\Desktop\LibPersona\obj\Debug\net8.0\ref\LibPersona.dll
+C:\Users\braian.pla.FRSN\Desktop\BASE DE DATOS 2\BDD2 CLASE11 LIBRERIAS\Libs\LibPersona\bin\Debug\net8.0\LibPersona.deps.json
+C:\Users\braian.pla.FRSN\Desktop\BASE DE DATOS 2\BDD2 CLASE11 LIBRERIAS\Libs\LibPersona\bin\Debug\net8.0\LibPersona.dll
+C:\Users\braian.pla.FRSN\Desktop\BASE DE DATOS 2\BDD2 CLASE11 LIBRERIAS\Libs\LibPersona\bin\Debug\net8.0\LibPersona.pdb
+C:\Users\braian.pla.FRSN\Desktop\BASE DE DATOS 2\BDD2 CLASE11 LIBRERIAS\Libs\LibPersona\obj\Debug\net8.0\LibPersona.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\braian.pla.FRSN\Desktop\BASE DE DATOS 2\BDD2 CLASE11 LIBRERIAS\Libs\LibPersona\obj\Debug\net8.0\LibPersona.AssemblyInfoInputs.cache
+C:\Users\braian.pla.FRSN\Desktop\BASE DE DATOS 2\BDD2 CLASE11 LIBRERIAS\Libs\LibPersona\obj\Debug\net8.0\LibPersona.AssemblyInfo.cs
+C:\Users\braian.pla.FRSN\Desktop\BASE DE DATOS 2\BDD2 CLASE11 LIBRERIAS\Libs\LibPersona\obj\Debug\net8.0\LibPersona.csproj.CoreCompileInputs.cache
+C:\Users\braian.pla.FRSN\Desktop\BASE DE DATOS 2\BDD2 CLASE11 LIBRERIAS\Libs\LibPersona\obj\Debug\net8.0\LibPersona.dll
+C:\Users\braian.pla.FRSN\Desktop\BASE DE DATOS 2\BDD2 CLASE11 LIBRERIAS\Libs\LibPersona\obj\Debug\net8.0\refint\LibPersona.dll
+C:\Users\braian.pla.FRSN\Desktop\BASE DE DATOS 2\BDD2 CLASE11 LIBRERIAS\Libs\LibPersona\obj\Debug\net8.0\LibPersona.pdb
+C:\Users\braian.pla.FRSN\Desktop\BASE DE DATOS 2\BDD2 CLASE11 LIBRERIAS\Libs\LibPersona\obj\Debug\net8.0\ref\LibPersona.dll

@@ -1,0 +1,55 @@
+Nos conectamos al PuTTy del profe
+
+Nos ubicamos en home/utn2026
+
+Importamos el archivo barrios
+mongoimport --uri "mongodb://admin:abc123@localhost:27017/?authSource=admin" --db Pla --collection Barrios --type csv --headerline --file barrios.csv
+
+Ejecutamos mongo
+./mongo.sh
+
+Entramos a  nuestra bdd
+use nombre
+
+Buscamos un barrio
+db.Barrios.findOne()
+
+Queries eligiendo que campo mostrar
+db.Barrios.find({ provincia: "Formosa"} , { nombre_barrio: 1, localidad: 1, cantidad_familias_aproximada: 1})
+
+db.Barrios.find({ provincia: "Formosa"} , { _id: 0, nombre_barrio: 1, localidad: 1, cantidad_familias_aproximada: 1})
+
+Sum campos numericos
+db.Barrios.aggregate([{ $group: { _id: null, familias: { $sum: "$cantidad_familias_aproximada" } } }])
+
+db.Barrios.aggregate([{ $group: { _id: null, viviendas: { $sum: "$cantidad_viviendas_aproximadas" } } }])
+
+db.Barrios.aggregate([{ $match: { provincia: "Salta" } }, { $group: { _id: null, viviendas: { $sum: "$cantidad_viviendas_aproximadas" } } }])
+
+db.Barrios.aggregate([{ $match: { provincia: "Tierra del Fuego" } }, { $group: { _id: null, viviendas: { $sum: "$cantidad_viviendas_aproximadas" } } }])
+
+Sum de mas de un campo
+db.Barrios.aggregate([{ $group: { _id: null, viviendas: { $sum: "$cantidad_viviendas_aproximadas" } , familias: { $sum: "$cantidad_familias_aproximada" } } }])
+
+Distinct
+db.Barrios.distinct('cocina')
+
+db.Barrios.distinct('calefaccion')
+
+Group by un solo campo
+db.Barrios.aggregate([{ $group: { _id: "$provincia", barrios_por_provincia: { $count: {} }}}])
+
+db.Barrios.aggregate([{ $group: { _id: "$calefaccion", cuantos: { $count: {} }}}])
+
+db.Barrios.aggregate([{ $group: { _id: "$cocina", cuantos: { $count: {} }}}])
+
+Group by mas de un campo
+db.Barrios.aggregate([{ $group: { _id: { provincia: "$provincia", localidad: "$localidad" }, cantidad: { $count: {} }}}])
+
+Update los nulls!
+db.Barrios.updateMany({"anio_de_creacion" : { $in: [null, ""] } },{ $set: { "anio_de_creacion":0 } } )
+
+Cuantos x anio_de_creacion
+db.Barrios.aggregate([{ $group: { _id: "$anio_de_creacion", cuantos: { $count: {} } } }])
+
+

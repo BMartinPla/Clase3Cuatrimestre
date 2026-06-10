@@ -1,0 +1,17 @@
+body {
+    display: flex;
+    background-color: lightblue;
+}
+
+.container {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    
+}
+
+.botondado {
+    
+    display: flex;
+
+}

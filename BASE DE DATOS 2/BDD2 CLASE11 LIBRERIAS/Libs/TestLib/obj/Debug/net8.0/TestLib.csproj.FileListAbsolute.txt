@@ -1,0 +1,54 @@
+/home/juan/desa/TestLib/obj/Debug/net8.0/TestLib.csproj.AssemblyReference.cache
+/home/juan/desa/TestLib/obj/Debug/net8.0/TestLib.GeneratedMSBuildEditorConfig.editorconfig
+/home/juan/desa/TestLib/obj/Debug/net8.0/TestLib.AssemblyInfoInputs.cache
+/home/juan/desa/TestLib/obj/Debug/net8.0/TestLib.AssemblyInfo.cs
+/home/juan/desa/TestLib/obj/Debug/net8.0/TestLib.csproj.CoreCompileInputs.cache
+/home/juan/desa/TestLib/bin/Debug/net8.0/TestLib
+/home/juan/desa/TestLib/bin/Debug/net8.0/TestLib.deps.json
+/home/juan/desa/TestLib/bin/Debug/net8.0/TestLib.runtimeconfig.json
+/home/juan/desa/TestLib/bin/Debug/net8.0/TestLib.dll
+/home/juan/desa/TestLib/bin/Debug/net8.0/TestLib.pdb
+/home/juan/desa/TestLib/bin/Debug/net8.0/LibPersona.dll
+/home/juan/desa/TestLib/bin/Debug/net8.0/LibPersona.pdb
+/home/juan/desa/TestLib/obj/Debug/net8.0/TestLib.csproj.Up2Date
+/home/juan/desa/TestLib/obj/Debug/net8.0/TestLib.dll
+/home/juan/desa/TestLib/obj/Debug/net8.0/refint/TestLib.dll
+/home/juan/desa/TestLib/obj/Debug/net8.0/TestLib.pdb
+/home/juan/desa/TestLib/obj/Debug/net8.0/TestLib.genruntimeconfig.cache
+/home/juan/desa/TestLib/obj/Debug/net8.0/ref/TestLib.dll
+C:\Users\jarce\Desktop\TestLib\obj\Debug\net8.0\TestLib.dll
+C:\Users\jarce\Desktop\TestLib\obj\Debug\net8.0\refint\TestLib.dll
+C:\Users\jarce\Desktop\TestLib\obj\Debug\net8.0\TestLib.pdb
+C:\Users\jarce\Desktop\TestLib\bin\Debug\net8.0\TestLib.exe
+C:\Users\jarce\Desktop\TestLib\bin\Debug\net8.0\TestLib.deps.json
+C:\Users\jarce\Desktop\TestLib\bin\Debug\net8.0\TestLib.runtimeconfig.json
+C:\Users\jarce\Desktop\TestLib\bin\Debug\net8.0\TestLib.dll
+C:\Users\jarce\Desktop\TestLib\bin\Debug\net8.0\TestLib.pdb
+C:\Users\jarce\Desktop\TestLib\bin\Debug\net8.0\LibPersona.dll
+C:\Users\jarce\Desktop\TestLib\bin\Debug\net8.0\LibPersona.pdb
+C:\Users\jarce\Desktop\TestLib\obj\Debug\net8.0\TestLib.csproj.AssemblyReference.cache
+C:\Users\jarce\Desktop\TestLib\obj\Debug\net8.0\TestLib.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\jarce\Desktop\TestLib\obj\Debug\net8.0\TestLib.AssemblyInfoInputs.cache
+C:\Users\jarce\Desktop\TestLib\obj\Debug\net8.0\TestLib.AssemblyInfo.cs
+C:\Users\jarce\Desktop\TestLib\obj\Debug\net8.0\TestLib.csproj.CoreCompileInputs.cache
+C:\Users\jarce\Desktop\TestLib\obj\Debug\net8.0\TestLib.csproj.Up2Date
+C:\Users\jarce\Desktop\TestLib\obj\Debug\net8.0\TestLib.genruntimeconfig.cache
+C:\Users\jarce\Desktop\TestLib\obj\Debug\net8.0\ref\TestLib.dll
+C:\Users\braian.pla.FRSN\Desktop\BASE DE DATOS 2\BDD2 CLASE11 LIBRERIAS\Libs\TestLib\bin\Debug\net8.0\TestLib.exe
+C:\Users\braian.pla.FRSN\Desktop\BASE DE DATOS 2\BDD2 CLASE11 LIBRERIAS\Libs\TestLib\bin\Debug\net8.0\TestLib.deps.json
+C:\Users\braian.pla.FRSN\Desktop\BASE DE DATOS 2\BDD2 CLASE11 LIBRERIAS\Libs\TestLib\bin\Debug\net8.0\TestLib.runtimeconfig.json
+C:\Users\braian.pla.FRSN\Desktop\BASE DE DATOS 2\BDD2 CLASE11 LIBRERIAS\Libs\TestLib\bin\Debug\net8.0\TestLib.dll
+C:\Users\braian.pla.FRSN\Desktop\BASE DE DATOS 2\BDD2 CLASE11 LIBRERIAS\Libs\TestLib\bin\Debug\net8.0\TestLib.pdb
+C:\Users\braian.pla.FRSN\Desktop\BASE DE DATOS 2\BDD2 CLASE11 LIBRERIAS\Libs\TestLib\bin\Debug\net8.0\LibPersona.dll
+C:\Users\braian.pla.FRSN\Desktop\BASE DE DATOS 2\BDD2 CLASE11 LIBRERIAS\Libs\TestLib\bin\Debug\net8.0\LibPersona.pdb
+C:\Users\braian.pla.FRSN\Desktop\BASE DE DATOS 2\BDD2 CLASE11 LIBRERIAS\Libs\TestLib\obj\Debug\net8.0\TestLib.csproj.AssemblyReference.cache
+C:\Users\braian.pla.FRSN\Desktop\BASE DE DATOS 2\BDD2 CLASE11 LIBRERIAS\Libs\TestLib\obj\Debug\net8.0\TestLib.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\braian.pla.FRSN\Desktop\BASE DE DATOS 2\BDD2 CLASE11 LIBRERIAS\Libs\TestLib\obj\Debug\net8.0\TestLib.AssemblyInfoInputs.cache
+C:\Users\braian.pla.FRSN\Desktop\BASE DE DATOS 2\BDD2 CLASE11 LIBRERIAS\Libs\TestLib\obj\Debug\net8.0\TestLib.AssemblyInfo.cs
+C:\Users\braian.pla.FRSN\Desktop\BASE DE DATOS 2\BDD2 CLASE11 LIBRERIAS\Libs\TestLib\obj\Debug\net8.0\TestLib.csproj.CoreCompileInputs.cache
+C:\Users\braian.pla.FRSN\Desktop\BASE DE DATOS 2\BDD2 CLASE11 LIBRERIAS\Libs\TestLib\obj\Debug\net8.0\TestLib.csproj.Up2Date
+C:\Users\braian.pla.FRSN\Desktop\BASE DE DATOS 2\BDD2 CLASE11 LIBRERIAS\Libs\TestLib\obj\Debug\net8.0\TestLib.dll
+C:\Users\braian.pla.FRSN\Desktop\BASE DE DATOS 2\BDD2 CLASE11 LIBRERIAS\Libs\TestLib\obj\Debug\net8.0\refint\TestLib.dll
+C:\Users\braian.pla.FRSN\Desktop\BASE DE DATOS 2\BDD2 CLASE11 LIBRERIAS\Libs\TestLib\obj\Debug\net8.0\TestLib.pdb
+C:\Users\braian.pla.FRSN\Desktop\BASE DE DATOS 2\BDD2 CLASE11 LIBRERIAS\Libs\TestLib\obj\Debug\net8.0\TestLib.genruntimeconfig.cache
+C:\Users\braian.pla.FRSN\Desktop\BASE DE DATOS 2\BDD2 CLASE11 LIBRERIAS\Libs\TestLib\obj\Debug\net8.0\ref\TestLib.dll

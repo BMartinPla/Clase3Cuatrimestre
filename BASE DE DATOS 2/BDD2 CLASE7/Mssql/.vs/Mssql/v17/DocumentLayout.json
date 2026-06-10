@@ -1,0 +1,141 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\braian.pla\\Desktop\\BASE DE DATOS 2\\BDD2 CLASE7\\Mssql\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{44348CCD-8BC7-3E8C-AF50-A4B2342CCB35}|Mssql.csproj|c:\\users\\braian.pla\\desktop\\base de datos 2\\bdd2 clase7\\mssql\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{44348CCD-8BC7-3E8C-AF50-A4B2342CCB35}|Mssql.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{44348CCD-8BC7-3E8C-AF50-A4B2342CCB35}|Mssql.csproj|c:\\users\\braian.pla\\desktop\\base de datos 2\\bdd2 clase7\\mssql\\provincia.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{44348CCD-8BC7-3E8C-AF50-A4B2342CCB35}|Mssql.csproj|solutionrelative:provincia.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{44348CCD-8BC7-3E8C-AF50-A4B2342CCB35}|Mssql.csproj|c:\\users\\braian.pla\\desktop\\base de datos 2\\bdd2 clase7\\mssql\\todo.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}",
+      "RelativeMoniker": "D:0:0:{44348CCD-8BC7-3E8C-AF50-A4B2342CCB35}|Mssql.csproj|solutionrelative:todo.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{44348CCD-8BC7-3E8C-AF50-A4B2342CCB35}|Mssql.csproj|c:\\users\\braian.pla\\desktop\\base de datos 2\\bdd2 clase7\\mssql\\barrios.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{44348CCD-8BC7-3E8C-AF50-A4B2342CCB35}|Mssql.csproj|solutionrelative:barrios.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{44348CCD-8BC7-3E8C-AF50-A4B2342CCB35}|Mssql.csproj|c:\\users\\braian.pla\\desktop\\base de datos 2\\bdd2 clase7\\mssql\\departamento.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{44348CCD-8BC7-3E8C-AF50-A4B2342CCB35}|Mssql.csproj|solutionrelative:departamento.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{44348CCD-8BC7-3E8C-AF50-A4B2342CCB35}|Mssql.csproj|c:\\users\\braian.pla\\desktop\\base de datos 2\\bdd2 clase7\\mssql\\barrio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{44348CCD-8BC7-3E8C-AF50-A4B2342CCB35}|Mssql.csproj|solutionrelative:barrio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{44348CCD-8BC7-3E8C-AF50-A4B2342CCB35}|Mssql.csproj|c:\\users\\braian.pla\\desktop\\base de datos 2\\bdd2 clase7\\mssql\\todo.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}|CodeFrame",
+      "RelativeMoniker": "D:0:0:{44348CCD-8BC7-3E8C-AF50-A4B2342CCB35}|Mssql.csproj|solutionrelative:todo.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}|CodeFrame"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 9,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{56df62a4-05a3-4e5b-aa1a-99371ccfb997}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c64b9c2-e352-428e-a56d-0ace190b99a6}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{40ea2e6b-2121-4bb8-a43e-c83c04b51041}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "todo.sql ",
+              "DocumentMoniker": "C:\\Users\\braian.pla\\Desktop\\BASE DE DATOS 2\\BDD2 CLASE7\\Mssql\\todo.sql",
+              "RelativeDocumentMoniker": "todo.sql",
+              "ToolTip": "C:\\Users\\braian.pla\\Desktop\\BASE DE DATOS 2\\BDD2 CLASE7\\Mssql\\todo.sql",
+              "RelativeToolTip": "todo.sql",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
+              "WhenOpened": "2026-04-24T21:54:27.832Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Barrios.json",
+              "DocumentMoniker": "C:\\Users\\braian.pla\\Desktop\\BASE DE DATOS 2\\BDD2 CLASE7\\Mssql\\Barrios.json",
+              "RelativeDocumentMoniker": "Barrios.json",
+              "ToolTip": "C:\\Users\\braian.pla\\Desktop\\BASE DE DATOS 2\\BDD2 CLASE7\\Mssql\\Barrios.json",
+              "RelativeToolTip": "Barrios.json",
+              "ViewState": "AgIAAH8CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-04-24T21:43:19.17Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Departamento.cs",
+              "DocumentMoniker": "C:\\Users\\braian.pla\\Desktop\\BASE DE DATOS 2\\BDD2 CLASE7\\Mssql\\Departamento.cs",
+              "RelativeDocumentMoniker": "Departamento.cs",
+              "ToolTip": "C:\\Users\\braian.pla\\Desktop\\BASE DE DATOS 2\\BDD2 CLASE7\\Mssql\\Departamento.cs",
+              "RelativeToolTip": "Departamento.cs",
+              "ViewState": "AgIAAB8AAAAAAAAAAAAcwBsAAAAPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-24T21:37:56.765Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Provincia.cs",
+              "DocumentMoniker": "C:\\Users\\braian.pla\\Desktop\\BASE DE DATOS 2\\BDD2 CLASE7\\Mssql\\Provincia.cs",
+              "RelativeDocumentMoniker": "Provincia.cs",
+              "ToolTip": "C:\\Users\\braian.pla\\Desktop\\BASE DE DATOS 2\\BDD2 CLASE7\\Mssql\\Provincia.cs",
+              "RelativeToolTip": "Provincia.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-24T21:37:38.078Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Barrio.cs",
+              "DocumentMoniker": "C:\\Users\\braian.pla\\Desktop\\BASE DE DATOS 2\\BDD2 CLASE7\\Mssql\\Barrio.cs",
+              "RelativeDocumentMoniker": "Barrio.cs",
+              "ToolTip": "C:\\Users\\braian.pla\\Desktop\\BASE DE DATOS 2\\BDD2 CLASE7\\Mssql\\Barrio.cs",
+              "RelativeToolTip": "Barrio.cs",
+              "ViewState": "AgIAACYAAAAAAAAAAAAowDcAAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-24T21:37:08.712Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\braian.pla\\Desktop\\BASE DE DATOS 2\\BDD2 CLASE7\\Mssql\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Users\\braian.pla\\Desktop\\BASE DE DATOS 2\\BDD2 CLASE7\\Mssql\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAABwAAAAAAAAAAAAgwA0AAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-24T21:14:06.938Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

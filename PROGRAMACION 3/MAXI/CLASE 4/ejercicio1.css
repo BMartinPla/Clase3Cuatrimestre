@@ -1,0 +1,55 @@
+body {
+    background: linear-gradient(to bottom, rgb(165, 165, 165), rgb(46, 46, 46));
+    justify-content: center;
+    margin: 0px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: rgb(207, 207, 207);
+    height: 100vh;
+}
+
+.container {
+    width: 75%;
+    display: flex;
+    background: linear-gradient(to top, rgb(34, 34, 34), rgb(145, 145, 145));
+    border-radius: 25px;
+    box-sizing: border-box;
+    border: solid 5px #161616;
+    padding: 30px;
+    flex-direction: column;
+    margin: auto;
+    margin-top: 10%;
+}
+
+.header {
+    display: flex;
+    width: 100%;
+    font-weight: bold;
+    background-color: #161616;
+    justify-content: space-between;
+    box-sizing: border-box;
+    padding: 10px;
+    border-radius: 10px;
+    border: solid 1px rgb(78, 78, 78);
+}
+
+.info {
+    font-size: 200%;
+}
+
+.photo {
+    background-image: url(tony.jpg);
+    width: 30%;
+    height: 150px;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: 10px;
+    border: solid 1px rgb(122, 122, 122)
+}
+
+.footer {
+    box-sizing: border-box;
+    font-size: 75%;
+    text-align: right;
+    box-sizing: border-box;
+}

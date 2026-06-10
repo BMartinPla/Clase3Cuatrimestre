@@ -1,0 +1,196 @@
+Mongo: El comando find.
+
+
+1. Seleccion de campos:
+db.unicorns.find( {} , { name : 1})
+
+Lit> db.unicorns.find( {} , { name : 1})
+[
+  { _id: ObjectId('6a021256bfeca02a7f44ba95'), name: 'Horny' },
+  { _id: ObjectId('6a021256bfeca02a7f44ba96'), name: 'Aurora' },
+  { _id: ObjectId('6a021256bfeca02a7f44ba97'), name: 'unicrom' },
+  { _id: ObjectId('6a021256bfeca02a7f44ba98'), name: 'Roooooodles' },
+  { _id: ObjectId('6a021256bfeca02a7f44ba99'), name: 'Solnara' },
+  { _id: ObjectId('6a021256bfeca02a7f44ba9a'), name: 'Ayna' },
+  { _id: ObjectId('6a021256bfeca02a7f44ba9b'), name: 'Kenny' },
+  { _id: ObjectId('6a021256bfeca02a7f44ba9c'), name: 'Raleigh' },
+  { _id: ObjectId('6a021256bfeca02a7f44ba9d'), name: 'Leia' },
+  { _id: ObjectId('6a021256bfeca02a7f44ba9e'), name: 'Pilot' },
+  { _id: ObjectId('6a021256bfeca02a7f44ba9f'), name: 'Nimue' },
+  { _id: ObjectId('6a021256bfeca02a7f44baa0'), name: 'Dunx' }
+]
+
+Por defecto, el campo _id siempre es retornado. 
+Podemos excluirlo explicitamente especificando {name:1, _id: 0}.
+Veremos que el orden no importa.
+
+Lit> db.unicorns.find( {} , { _id: 0, name : 1})
+[
+  { name: 'Horny' },
+  { name: 'Aurora' },
+  { name: 'unicrom' },
+  { name: 'Roooooodles' },
+  { name: 'Solnara' },
+  { name: 'Ayna' },
+  { name: 'Kenny' },
+  { name: 'Raleigh' },
+  { name: 'Leia' },
+  { name: 'Pilot' },
+  { name: 'Nimue' },
+  { name: 'Dunx' }
+]
+
+2. Ordenamiento
+
+Cursores: cuando se le piden datos a MongoDB, mongo retorna un cursor, 
+con el que podemos hacer algunas cosas, como contar
+o saltar algún dato, sin descargarlos de hecho.
+El comando find retorna un cursor. <-- ESTO ES IMPORTANTE
+
+En el caso de cursores, su ejecución es retardada hasta que se necesite. 
+Sin embargo, lo que se observa desde la terminal es que find retorna datos (un cursor) inmediatamente. 
+Este es un comportamiento solo de la terminal. 
+Podemos observar el verdadero comportamiento de los cursors viendo uno de los métodos que podemos unir a find. 
+
+El primero que veremos es sort (ordenar). 
+Sort se comporta como la selección de campo de la sección anterior. 
+Nosotros especificamos los campos por los cuales queremos ordenar, usando 1 para
+ascendente y -1 para descendente.
+
+2.1. Ordenados por peso, de mayor a menor
+Lit> db.unicorns.find({}, { _id: 0, name: 1, weight: 1 }).sort({ weight: -1 })
+[
+  { name: 'unicrom', weight: 984 },
+  { name: 'Ayna', weight: 733 },
+  { name: 'Dunx', weight: 704 },
+  { name: 'Kenny', weight: 690 },
+  { name: 'Pilot', weight: 650 },
+  { name: 'Leia', weight: 601 },
+  { name: 'Horny', weight: 600 },
+  { weight: 590, name: 'Roooooodles' },
+  { name: 'Solnara', weight: 550 },
+  { name: 'Nimue', weight: 540 },
+  { name: 'Aurora', weight: 450 },
+  { name: 'Raleigh', weight: 421 }
+]
+
+2.2.Ordenados por peso, de  menor a mayor.
+Lit> db.unicorns.find({}, { _id: 0, name: 1, weight: 1 }).sort({ weight: 1 })
+[
+  { name: 'Raleigh', weight: 421 },
+  { name: 'Aurora', weight: 450 },
+  { name: 'Nimue', weight: 540 },
+  { name: 'Solnara', weight: 550 },
+  { weight: 590, name: 'Roooooodles' },
+  { name: 'Horny', weight: 600 },
+  { name: 'Leia', weight: 601 },
+  { name: 'Pilot', weight: 650 },
+  { name: 'Kenny', weight: 690 },
+  { name: 'Dunx', weight: 704 },
+  { name: 'Ayna', weight: 733 },
+  { name: 'unicrom', weight: 984 }
+]
+
+2.3 Ordenados por nombre y luego por el numero de vampiros matados
+Lit> db.unicorns.find({}, { _id:0, name: 1, vampires: 1}).sort({ vampires : -1, name: 1})
+[
+  { name: 'unicrom', vampires: 182 },
+  { name: 'Dunx', vampires: 165 },
+  { name: 'Roooooodles', vampires: 99 },
+  { name: 'Solnara', vampires: 80 },
+  { name: 'Horny', vampires: 63 },
+  { name: 'Pilot', vampires: 52 },
+  { name: 'Aurora', vampires: 43 },
+  { name: 'Ayna', vampires: 40 },
+  { name: 'Kenny', vampires: 39 },
+  { name: 'Leia', vampires: 33 },
+  { name: 'Raleigh', vampires: 2 },
+  { name: 'Nimue' }
+]
+Lit> db.unicorns.find({}, { _id:0, name: 1, vampires: 1}).sort({ vampires : 1, name: 1})
+[
+  { name: 'Nimue' },
+  { name: 'Raleigh', vampires: 2 },
+  { name: 'Leia', vampires: 33 },
+  { name: 'Kenny', vampires: 39 },
+  { name: 'Ayna', vampires: 40 },
+  { name: 'Aurora', vampires: 43 },
+  { name: 'Pilot', vampires: 52 },
+  { name: 'Horny', vampires: 63 },
+  { name: 'Solnara', vampires: 80 },
+  { name: 'Roooooodles', vampires: 99 },
+  { name: 'Dunx', vampires: 165 },
+  { name: 'unicrom', vampires: 182 }
+]
+
+Lit> db.unicorns.find({}, { _id:0, name: 1, vampires: 1}).sort({ name : 1 , vampires : -1})
+[
+  { name: 'Aurora', vampires: 43 },
+  { name: 'Ayna', vampires: 40 },
+  { name: 'Dunx', vampires: 165 },
+  { name: 'Horny', vampires: 63 },
+  { name: 'Kenny', vampires: 39 },
+  { name: 'Leia', vampires: 33 },
+  { name: 'Nimue' },
+  { name: 'Pilot', vampires: 52 },
+  { name: 'Raleigh', vampires: 2 },
+  { name: 'Roooooodles', vampires: 99 },
+  { name: 'Solnara', vampires: 80 },
+  { name: 'unicrom', vampires: 182 }
+]
+Lit> db.unicorns.find({}, { _id:0, name: 1, vampires: 1}).sort({ name : -1 , vampires : -1})
+[
+  { name: 'unicrom', vampires: 182 },
+  { name: 'Solnara', vampires: 80 },
+  { name: 'Roooooodles', vampires: 99 },
+  { name: 'Raleigh', vampires: 2 },
+  { name: 'Pilot', vampires: 52 },
+  { name: 'Nimue' },
+  { name: 'Leia', vampires: 33 },
+  { name: 'Kenny', vampires: 39 },
+  { name: 'Horny', vampires: 63 },
+  { name: 'Dunx', vampires: 165 },
+  { name: 'Ayna', vampires: 40 },
+  { name: 'Aurora', vampires: 43 }
+]
+
+3. Paginacion
+
+Paginar los resultados e hace usando los métodos de cursores limit y skip. 
+
+Para obtener el segundo y tercer unicorn mas pesados, podemos hacer:
+
+1ro: Todos
+Lit> db.unicorns.find({},{_id:0, name: 1}).sort({ weight : -1})
+[
+  { name: 'unicrom' },
+  { name: 'Ayna' },
+  { name: 'Dunx' },
+  { name: 'Kenny' },
+  { name: 'Pilot' },
+  { name: 'Leia' },
+  { name: 'Horny' },
+  { name: 'Roooooodles' },
+  { name: 'Solnara' },
+  { name: 'Nimue' },
+  { name: 'Aurora' },
+  { name: 'Raleigh' }
+]
+2do: Filtrado
+Lit> db.unicorns.find({},{_id:0, name: 1}).sort({ weight : -1}).limit(2).skip(1)
+[ { name: 'Ayna' }, { name: 'Dunx' } ]
+
+
+Usando limit en conjunto con sort, es una buena forma de evitar encontrarnos con problemas cuando hacemos
+ordenamiento en campo sin indice.
+Hay un limite en la cantidad de documentos que puede devolver find().
+
+4. Count
+
+Lit> db.unicorns.countDocuments({ vampires: { $gt: 50}})
+6
+
+Lit> db.unicorns.countDocuments({ vampires: { $lt: 50}})
+5
+
+

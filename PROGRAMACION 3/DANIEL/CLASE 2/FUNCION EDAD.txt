@@ -1,0 +1,16 @@
+-- DROP FUNCTION CalcularEdad
+
+CREATE FUNCTION CalcularEdad (@fecha_nacimiento datetime)
+RETURNS NUMERIC(3)
+AS
+BEGIN
+DECLARE @EDAD NUMERIC(3)
+SET @EDAD = (SELECT
+        CASE 
+            WHEN (MONTH(@fecha_nacimiento) > MONTH(GETDATE())) 
+              OR (MONTH(@fecha_nacimiento) = MONTH(GETDATE()) AND DAY(@fecha_nacimiento) > DAY(GETDATE())) 
+            THEN DATEDIFF(year, @fecha_nacimiento, GETDATE()) - 1
+            ELSE DATEDIFF(year, @fecha_nacimiento, GETDATE())
+        END);
+    RETURN @edad;
+END;

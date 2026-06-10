@@ -1,0 +1,104 @@
+body {
+    background: linear-gradient(to bottom, rgb(255, 198, 198), rgb(83, 83, 83));
+    display: flex;
+    justify-content: center;
+    margin: 0px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: rgb(0, 0, 0);
+    height: 100vh;
+}
+
+
+
+.container {
+    max-height: 70%;
+    width: 90%;
+    display: flex;
+    padding: 10px;
+    justify-content: center;
+    gap: 25px;
+    align-items: center;
+    flex-direction: column;
+}
+
+.productos{
+    margin-top: 20%;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    
+    
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    width: 20%;
+    background:linear-gradient(to top, red, rgb(20, 0, 92));
+    border-radius: 10px;
+    color: rgb(187, 187, 187);
+    
+    
+}
+
+.photo {
+
+}
+
+.photo {
+    width: 100%;
+    height: 150px;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.p1 {
+    background-image: url(CB190.png);
+}
+
+.p2 {
+    background-image: url(CB300.png);
+}
+
+.p3 {
+    background-image: url(CB500.png);
+}
+.p4 {
+    background-image: url(CB1000.png);
+}
+
+
+.title {
+    box-sizing: border-box;
+    text-align: center;
+    border-bottom: solid 1px black;
+}
+
+.footer {
+    color: blue;
+    text-align: end;
+    margin-top: auto;
+    padding-top: 30px;
+}
+
+
+@media screen and (max-width: 800px)
+{
+    body {
+        height: 100%;
+    }
+    .productos
+    {
+        margin-top: 0;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .card {
+        width: 70%;
+    }
+}

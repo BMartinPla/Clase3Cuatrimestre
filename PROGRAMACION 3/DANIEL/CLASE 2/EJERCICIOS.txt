@@ -1,0 +1,13 @@
+
+
+SELECT cod_postal as codigo, count(*) as cantidad from alumnos a group by cod_postal order by cantidad desc
+
+
+
+SELECT CONCAT (RTRIM(a.apellido), ', ', RTRIM(a.nombre)) as APyNOM, 
+convert(char(12),a.fecha_nacimiento,107) as FECHA,
+datepart(year,getdate()) - datepart(year, a.fecha_nacimiento) as EDAD,
+dbo.CalcularEdad(fecha_nacimiento) as EDAD2,
+dbo.CalcularRangoEdad(fecha_nacimiento) as RANGO
+
+from alumnos a

@@ -1,0 +1,88 @@
+/* Importamos una fuente moderna desde Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); /* Fondo degradado */
+    font-family: 'Poppins', sans-serif;
+}
+
+.todo {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 2.5rem;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    width: 350px;
+    transition: transform 0.3s ease;
+}
+
+.todo:hover {
+    transform: translateY(-5px); /* Efecto sutil al pasar el mouse */
+}
+
+.content input {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #e2e8f0;
+    border-radius: 10px;
+    font-size: 1rem;
+    outline: none;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+}
+
+.content input:focus {
+    border-color: #667eea; /* Color de foco */
+}
+
+.acciones {
+    margin-top: 1.5rem;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Estilo específico para cada botón */
+#btnSaludar {
+    background-color: #48bb78;
+    color: white;
+}
+
+#btnSaludar:hover {
+    background-color: #38a169;
+    box-shadow: 0 4px 12px rgba(72, 187, 120, 0.3);
+}
+
+#btnDespedir {
+    background-color: #f56565;
+    color: white;
+}
+
+#btnDespedir:hover {
+    background-color: #e53e3e;
+    box-shadow: 0 4px 12px rgba(245, 101, 101, 0.3);
+}
+
+#mensajeResultado {
+    margin-top: 2rem;
+    color: #2d3748;
+    font-size: 1.2rem;
+    min-height: 1.5em; /* Evita que el contenedor salte al aparecer el texto */
+}

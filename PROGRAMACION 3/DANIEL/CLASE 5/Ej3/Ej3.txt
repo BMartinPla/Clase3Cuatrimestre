@@ -1,0 +1,5 @@
+SELECT RTRIM(a.nro_alumno) as nro_alumno, RTRIM(a.apellido) as apellido, RTRIM(a.nombre) as nombre, RTRIM(a.dni) as dni,
+RTRIM(a.nro_legajo) as nro_legajo, RTRIM(a.fecha_nacimiento) as fecha_nacimiento, RTRIM(a.sexo) as sexo, RTRIM(a.telefono) as telefono,
+CONCAT(RTRIM(a.calle), ' ', RTRIM(a.nro)) as direccion, RTRIM(a.cod_postal) as codigo_postal, RTRIM(a.estado) as estado 
+from alumnos a 
+FOR JSON PATH;

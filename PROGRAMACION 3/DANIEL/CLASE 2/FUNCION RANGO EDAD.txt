@@ -1,0 +1,31 @@
+
+--DROP FUNCTION CalcularRangoEdad
+
+CREATE FUNCTION CalcularRangoEdad (@fecha_nacimiento datetime)
+RETURNS CHAR(10)
+AS
+BEGIN
+    DECLARE @edad numeric(6);
+	DECLARE @rango_edad char(20);
+
+    SET @edad = (SELECT
+        CASE 
+            WHEN (MONTH(@fecha_nacimiento) > MONTH(GETDATE())) 
+              OR (MONTH(@fecha_nacimiento) = MONTH(GETDATE()) AND DAY(@fecha_nacimiento) > DAY(GETDATE())) 
+            THEN DATEDIFF(year, @fecha_nacimiento, GETDATE()) - 1
+            ELSE DATEDIFF(year, @fecha_nacimiento, GETDATE())
+        END);
+	
+	set @rango_edad = 
+	case 
+	when  @edad <= 20 then '20>'
+	when  @edad > 20 and @edad <= 25  then '20-25'
+	when  @edad > 25 and @edad <= 30  then '25-30'
+	when  @edad > 30 and @edad <= 35  then '30-35'
+	when  @edad > 35 and @edad <= 40  then '35-40'
+	when  @edad > 40 then '40<'
+	else '?'
+	end;
+
+    RETURN @rango_edad;
+END;

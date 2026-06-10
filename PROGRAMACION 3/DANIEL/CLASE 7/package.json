@@ -1,0 +1,13 @@
+{
+  "name": "clase-7-app",
+  "version": "1.0.0",
+  "description": "Servidor Express con importación JSON en ESM",
+  "type": "module",
+  "main": "App.mjs",
+  "scripts": {
+    "start": "node App.mjs"
+  },
+  "dependencies": {
+    "express": "^4.18.4"
+  }
+}

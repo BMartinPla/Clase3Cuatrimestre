@@ -1,0 +1,118 @@
+/home/juan/desa/CS/Mssql/bin/Debug/net8.0/Mssql
+/home/juan/desa/CS/Mssql/bin/Debug/net8.0/Mssql.deps.json
+/home/juan/desa/CS/Mssql/bin/Debug/net8.0/Mssql.runtimeconfig.json
+/home/juan/desa/CS/Mssql/bin/Debug/net8.0/Mssql.dll
+/home/juan/desa/CS/Mssql/bin/Debug/net8.0/Mssql.pdb
+/home/juan/desa/CS/Mssql/bin/Debug/net8.0/Microsoft.Bcl.Cryptography.dll
+/home/juan/desa/CS/Mssql/bin/Debug/net8.0/Microsoft.Data.SqlClient.dll
+/home/juan/desa/CS/Mssql/bin/Debug/net8.0/Microsoft.Data.SqlClient.Extensions.Abstractions.dll
+/home/juan/desa/CS/Mssql/bin/Debug/net8.0/Microsoft.Data.SqlClient.Internal.Logging.dll
+/home/juan/desa/CS/Mssql/bin/Debug/net8.0/Microsoft.Extensions.Caching.Abstractions.dll
+/home/juan/desa/CS/Mssql/bin/Debug/net8.0/Microsoft.Extensions.Caching.Memory.dll
+/home/juan/desa/CS/Mssql/bin/Debug/net8.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll
+/home/juan/desa/CS/Mssql/bin/Debug/net8.0/Microsoft.Extensions.Logging.Abstractions.dll
+/home/juan/desa/CS/Mssql/bin/Debug/net8.0/Microsoft.Extensions.Options.dll
+/home/juan/desa/CS/Mssql/bin/Debug/net8.0/Microsoft.Extensions.Primitives.dll
+/home/juan/desa/CS/Mssql/bin/Debug/net8.0/Microsoft.IdentityModel.Abstractions.dll
+/home/juan/desa/CS/Mssql/bin/Debug/net8.0/Microsoft.IdentityModel.JsonWebTokens.dll
+/home/juan/desa/CS/Mssql/bin/Debug/net8.0/Microsoft.IdentityModel.Logging.dll
+/home/juan/desa/CS/Mssql/bin/Debug/net8.0/Microsoft.IdentityModel.Protocols.dll
+/home/juan/desa/CS/Mssql/bin/Debug/net8.0/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+/home/juan/desa/CS/Mssql/bin/Debug/net8.0/Microsoft.IdentityModel.Tokens.dll
+/home/juan/desa/CS/Mssql/bin/Debug/net8.0/Microsoft.SqlServer.Server.dll
+/home/juan/desa/CS/Mssql/bin/Debug/net8.0/System.Configuration.ConfigurationManager.dll
+/home/juan/desa/CS/Mssql/bin/Debug/net8.0/System.Diagnostics.EventLog.dll
+/home/juan/desa/CS/Mssql/bin/Debug/net8.0/System.IdentityModel.Tokens.Jwt.dll
+/home/juan/desa/CS/Mssql/bin/Debug/net8.0/System.Security.Cryptography.Pkcs.dll
+/home/juan/desa/CS/Mssql/bin/Debug/net8.0/System.Security.Cryptography.ProtectedData.dll
+/home/juan/desa/CS/Mssql/bin/Debug/net8.0/cs/Microsoft.Data.SqlClient.resources.dll
+/home/juan/desa/CS/Mssql/bin/Debug/net8.0/de/Microsoft.Data.SqlClient.resources.dll
+/home/juan/desa/CS/Mssql/bin/Debug/net8.0/es/Microsoft.Data.SqlClient.resources.dll
+/home/juan/desa/CS/Mssql/bin/Debug/net8.0/fr/Microsoft.Data.SqlClient.resources.dll
+/home/juan/desa/CS/Mssql/bin/Debug/net8.0/it/Microsoft.Data.SqlClient.resources.dll
+/home/juan/desa/CS/Mssql/bin/Debug/net8.0/ja/Microsoft.Data.SqlClient.resources.dll
+/home/juan/desa/CS/Mssql/bin/Debug/net8.0/ko/Microsoft.Data.SqlClient.resources.dll
+/home/juan/desa/CS/Mssql/bin/Debug/net8.0/pl/Microsoft.Data.SqlClient.resources.dll
+/home/juan/desa/CS/Mssql/bin/Debug/net8.0/pt-BR/Microsoft.Data.SqlClient.resources.dll
+/home/juan/desa/CS/Mssql/bin/Debug/net8.0/ru/Microsoft.Data.SqlClient.resources.dll
+/home/juan/desa/CS/Mssql/bin/Debug/net8.0/tr/Microsoft.Data.SqlClient.resources.dll
+/home/juan/desa/CS/Mssql/bin/Debug/net8.0/zh-Hans/Microsoft.Data.SqlClient.resources.dll
+/home/juan/desa/CS/Mssql/bin/Debug/net8.0/zh-Hant/Microsoft.Data.SqlClient.resources.dll
+/home/juan/desa/CS/Mssql/bin/Debug/net8.0/runtimes/unix/lib/net8.0/Microsoft.Data.SqlClient.dll
+/home/juan/desa/CS/Mssql/bin/Debug/net8.0/runtimes/win/lib/net8.0/Microsoft.Data.SqlClient.dll
+/home/juan/desa/CS/Mssql/bin/Debug/net8.0/runtimes/win-arm64/native/Microsoft.Data.SqlClient.SNI.dll
+/home/juan/desa/CS/Mssql/bin/Debug/net8.0/runtimes/win-x64/native/Microsoft.Data.SqlClient.SNI.dll
+/home/juan/desa/CS/Mssql/bin/Debug/net8.0/runtimes/win-x86/native/Microsoft.Data.SqlClient.SNI.dll
+/home/juan/desa/CS/Mssql/bin/Debug/net8.0/runtimes/win/lib/net8.0/System.Diagnostics.EventLog.Messages.dll
+/home/juan/desa/CS/Mssql/bin/Debug/net8.0/runtimes/win/lib/net8.0/System.Diagnostics.EventLog.dll
+/home/juan/desa/CS/Mssql/bin/Debug/net8.0/runtimes/win/lib/net8.0/System.Security.Cryptography.Pkcs.dll
+/home/juan/desa/CS/Mssql/obj/Debug/net8.0/Mssql.csproj.AssemblyReference.cache
+/home/juan/desa/CS/Mssql/obj/Debug/net8.0/Mssql.GeneratedMSBuildEditorConfig.editorconfig
+/home/juan/desa/CS/Mssql/obj/Debug/net8.0/Mssql.AssemblyInfoInputs.cache
+/home/juan/desa/CS/Mssql/obj/Debug/net8.0/Mssql.AssemblyInfo.cs
+/home/juan/desa/CS/Mssql/obj/Debug/net8.0/Mssql.csproj.CoreCompileInputs.cache
+/home/juan/desa/CS/Mssql/obj/Debug/net8.0/Mssql.csproj.Up2Date
+/home/juan/desa/CS/Mssql/obj/Debug/net8.0/Mssql.dll
+/home/juan/desa/CS/Mssql/obj/Debug/net8.0/refint/Mssql.dll
+/home/juan/desa/CS/Mssql/obj/Debug/net8.0/Mssql.pdb
+/home/juan/desa/CS/Mssql/obj/Debug/net8.0/Mssql.genruntimeconfig.cache
+/home/juan/desa/CS/Mssql/obj/Debug/net8.0/ref/Mssql.dll
+C:\Users\braian.pla\Desktop\BASE DE DATOS 2\BDD2 CLASE7\Mssql\bin\Debug\net8.0\Mssql.exe
+C:\Users\braian.pla\Desktop\BASE DE DATOS 2\BDD2 CLASE7\Mssql\bin\Debug\net8.0\Mssql.deps.json
+C:\Users\braian.pla\Desktop\BASE DE DATOS 2\BDD2 CLASE7\Mssql\bin\Debug\net8.0\Mssql.runtimeconfig.json
+C:\Users\braian.pla\Desktop\BASE DE DATOS 2\BDD2 CLASE7\Mssql\bin\Debug\net8.0\Mssql.dll
+C:\Users\braian.pla\Desktop\BASE DE DATOS 2\BDD2 CLASE7\Mssql\bin\Debug\net8.0\Mssql.pdb
+C:\Users\braian.pla\Desktop\BASE DE DATOS 2\BDD2 CLASE7\Mssql\bin\Debug\net8.0\Microsoft.Bcl.Cryptography.dll
+C:\Users\braian.pla\Desktop\BASE DE DATOS 2\BDD2 CLASE7\Mssql\bin\Debug\net8.0\Microsoft.Data.SqlClient.dll
+C:\Users\braian.pla\Desktop\BASE DE DATOS 2\BDD2 CLASE7\Mssql\bin\Debug\net8.0\Microsoft.Data.SqlClient.Extensions.Abstractions.dll
+C:\Users\braian.pla\Desktop\BASE DE DATOS 2\BDD2 CLASE7\Mssql\bin\Debug\net8.0\Microsoft.Data.SqlClient.Internal.Logging.dll
+C:\Users\braian.pla\Desktop\BASE DE DATOS 2\BDD2 CLASE7\Mssql\bin\Debug\net8.0\Microsoft.Extensions.Caching.Abstractions.dll
+C:\Users\braian.pla\Desktop\BASE DE DATOS 2\BDD2 CLASE7\Mssql\bin\Debug\net8.0\Microsoft.Extensions.Caching.Memory.dll
+C:\Users\braian.pla\Desktop\BASE DE DATOS 2\BDD2 CLASE7\Mssql\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\braian.pla\Desktop\BASE DE DATOS 2\BDD2 CLASE7\Mssql\bin\Debug\net8.0\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\braian.pla\Desktop\BASE DE DATOS 2\BDD2 CLASE7\Mssql\bin\Debug\net8.0\Microsoft.Extensions.Options.dll
+C:\Users\braian.pla\Desktop\BASE DE DATOS 2\BDD2 CLASE7\Mssql\bin\Debug\net8.0\Microsoft.Extensions.Primitives.dll
+C:\Users\braian.pla\Desktop\BASE DE DATOS 2\BDD2 CLASE7\Mssql\bin\Debug\net8.0\Microsoft.IdentityModel.Abstractions.dll
+C:\Users\braian.pla\Desktop\BASE DE DATOS 2\BDD2 CLASE7\Mssql\bin\Debug\net8.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\braian.pla\Desktop\BASE DE DATOS 2\BDD2 CLASE7\Mssql\bin\Debug\net8.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\braian.pla\Desktop\BASE DE DATOS 2\BDD2 CLASE7\Mssql\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.dll
+C:\Users\braian.pla\Desktop\BASE DE DATOS 2\BDD2 CLASE7\Mssql\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\braian.pla\Desktop\BASE DE DATOS 2\BDD2 CLASE7\Mssql\bin\Debug\net8.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\braian.pla\Desktop\BASE DE DATOS 2\BDD2 CLASE7\Mssql\bin\Debug\net8.0\Microsoft.SqlServer.Server.dll
+C:\Users\braian.pla\Desktop\BASE DE DATOS 2\BDD2 CLASE7\Mssql\bin\Debug\net8.0\System.Configuration.ConfigurationManager.dll
+C:\Users\braian.pla\Desktop\BASE DE DATOS 2\BDD2 CLASE7\Mssql\bin\Debug\net8.0\System.Diagnostics.EventLog.dll
+C:\Users\braian.pla\Desktop\BASE DE DATOS 2\BDD2 CLASE7\Mssql\bin\Debug\net8.0\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\braian.pla\Desktop\BASE DE DATOS 2\BDD2 CLASE7\Mssql\bin\Debug\net8.0\System.Security.Cryptography.Pkcs.dll
+C:\Users\braian.pla\Desktop\BASE DE DATOS 2\BDD2 CLASE7\Mssql\bin\Debug\net8.0\System.Security.Cryptography.ProtectedData.dll
+C:\Users\braian.pla\Desktop\BASE DE DATOS 2\BDD2 CLASE7\Mssql\bin\Debug\net8.0\cs\Microsoft.Data.SqlClient.resources.dll
+C:\Users\braian.pla\Desktop\BASE DE DATOS 2\BDD2 CLASE7\Mssql\bin\Debug\net8.0\de\Microsoft.Data.SqlClient.resources.dll
+C:\Users\braian.pla\Desktop\BASE DE DATOS 2\BDD2 CLASE7\Mssql\bin\Debug\net8.0\es\Microsoft.Data.SqlClient.resources.dll
+C:\Users\braian.pla\Desktop\BASE DE DATOS 2\BDD2 CLASE7\Mssql\bin\Debug\net8.0\fr\Microsoft.Data.SqlClient.resources.dll
+C:\Users\braian.pla\Desktop\BASE DE DATOS 2\BDD2 CLASE7\Mssql\bin\Debug\net8.0\it\Microsoft.Data.SqlClient.resources.dll
+C:\Users\braian.pla\Desktop\BASE DE DATOS 2\BDD2 CLASE7\Mssql\bin\Debug\net8.0\ja\Microsoft.Data.SqlClient.resources.dll
+C:\Users\braian.pla\Desktop\BASE DE DATOS 2\BDD2 CLASE7\Mssql\bin\Debug\net8.0\ko\Microsoft.Data.SqlClient.resources.dll
+C:\Users\braian.pla\Desktop\BASE DE DATOS 2\BDD2 CLASE7\Mssql\bin\Debug\net8.0\pl\Microsoft.Data.SqlClient.resources.dll
+C:\Users\braian.pla\Desktop\BASE DE DATOS 2\BDD2 CLASE7\Mssql\bin\Debug\net8.0\pt-BR\Microsoft.Data.SqlClient.resources.dll
+C:\Users\braian.pla\Desktop\BASE DE DATOS 2\BDD2 CLASE7\Mssql\bin\Debug\net8.0\ru\Microsoft.Data.SqlClient.resources.dll
+C:\Users\braian.pla\Desktop\BASE DE DATOS 2\BDD2 CLASE7\Mssql\bin\Debug\net8.0\tr\Microsoft.Data.SqlClient.resources.dll
+C:\Users\braian.pla\Desktop\BASE DE DATOS 2\BDD2 CLASE7\Mssql\bin\Debug\net8.0\zh-Hans\Microsoft.Data.SqlClient.resources.dll
+C:\Users\braian.pla\Desktop\BASE DE DATOS 2\BDD2 CLASE7\Mssql\bin\Debug\net8.0\zh-Hant\Microsoft.Data.SqlClient.resources.dll
+C:\Users\braian.pla\Desktop\BASE DE DATOS 2\BDD2 CLASE7\Mssql\bin\Debug\net8.0\runtimes\unix\lib\net8.0\Microsoft.Data.SqlClient.dll
+C:\Users\braian.pla\Desktop\BASE DE DATOS 2\BDD2 CLASE7\Mssql\bin\Debug\net8.0\runtimes\win\lib\net8.0\Microsoft.Data.SqlClient.dll
+C:\Users\braian.pla\Desktop\BASE DE DATOS 2\BDD2 CLASE7\Mssql\bin\Debug\net8.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\braian.pla\Desktop\BASE DE DATOS 2\BDD2 CLASE7\Mssql\bin\Debug\net8.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\braian.pla\Desktop\BASE DE DATOS 2\BDD2 CLASE7\Mssql\bin\Debug\net8.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\braian.pla\Desktop\BASE DE DATOS 2\BDD2 CLASE7\Mssql\bin\Debug\net8.0\runtimes\win\lib\net8.0\System.Diagnostics.EventLog.Messages.dll
+C:\Users\braian.pla\Desktop\BASE DE DATOS 2\BDD2 CLASE7\Mssql\bin\Debug\net8.0\runtimes\win\lib\net8.0\System.Diagnostics.EventLog.dll
+C:\Users\braian.pla\Desktop\BASE DE DATOS 2\BDD2 CLASE7\Mssql\bin\Debug\net8.0\runtimes\win\lib\net8.0\System.Security.Cryptography.Pkcs.dll
+C:\Users\braian.pla\Desktop\BASE DE DATOS 2\BDD2 CLASE7\Mssql\obj\Debug\net8.0\Mssql.csproj.AssemblyReference.cache
+C:\Users\braian.pla\Desktop\BASE DE DATOS 2\BDD2 CLASE7\Mssql\obj\Debug\net8.0\Mssql.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\braian.pla\Desktop\BASE DE DATOS 2\BDD2 CLASE7\Mssql\obj\Debug\net8.0\Mssql.AssemblyInfoInputs.cache
+C:\Users\braian.pla\Desktop\BASE DE DATOS 2\BDD2 CLASE7\Mssql\obj\Debug\net8.0\Mssql.AssemblyInfo.cs
+C:\Users\braian.pla\Desktop\BASE DE DATOS 2\BDD2 CLASE7\Mssql\obj\Debug\net8.0\Mssql.csproj.CoreCompileInputs.cache
+C:\Users\braian.pla\Desktop\BASE DE DATOS 2\BDD2 CLASE7\Mssql\obj\Debug\net8.0\Mssql.csproj.Up2Date
+C:\Users\braian.pla\Desktop\BASE DE DATOS 2\BDD2 CLASE7\Mssql\obj\Debug\net8.0\Mssql.dll
+C:\Users\braian.pla\Desktop\BASE DE DATOS 2\BDD2 CLASE7\Mssql\obj\Debug\net8.0\refint\Mssql.dll
+C:\Users\braian.pla\Desktop\BASE DE DATOS 2\BDD2 CLASE7\Mssql\obj\Debug\net8.0\Mssql.pdb
+C:\Users\braian.pla\Desktop\BASE DE DATOS 2\BDD2 CLASE7\Mssql\obj\Debug\net8.0\Mssql.genruntimeconfig.cache
+C:\Users\braian.pla\Desktop\BASE DE DATOS 2\BDD2 CLASE7\Mssql\obj\Debug\net8.0\ref\Mssql.dll

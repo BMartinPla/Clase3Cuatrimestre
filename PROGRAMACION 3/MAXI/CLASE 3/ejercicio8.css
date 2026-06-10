@@ -1,0 +1,51 @@
+
+body {
+    background-color: gray;
+    padding: 2%;
+    height: 90vh;
+}
+
+.container {
+    background-color: red;
+    height: 100%;
+    width: 50%;
+    text-align: center;
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.torre {
+    display: inline-block;
+    height: 100%;
+    width: 20%;
+    margin-left: 2%;
+    margin-right: 2%;
+    position: relative;
+}
+
+.rectangulo {
+    display: inline-block;
+    height: 90%;
+    width: 35%;
+    margin: 2%;
+    margin-top: 4%;
+    position: relative;
+
+}
+
+.verde {
+    background-color: green;
+}
+
+.azul {
+    background-color: blue;
+}
+
+.gris {
+    background-color: gray;
+}
+
+.negro {
+    background-color: black;
+}

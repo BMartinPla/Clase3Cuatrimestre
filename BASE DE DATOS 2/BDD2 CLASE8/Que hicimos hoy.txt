@@ -1,0 +1,52 @@
+Descargamos e instalamos PuTTY
+
+Pusimos la IP (172.16.1.226) del profe e ingresamos a su laptop con un usuario que el creo.
+
+Utilizamos los siguientes comandos:
+
+who (para saber quien esta conectado)
+
+neofetch (para ver los datos del pc servidor)
+
+id (para ver nuestros datos)
+
+top (para ver las aplicaciones que se estan ejecutando)
+
+q (para salir)
+
+cd /tmp (para entrar a los archivos temporales)
+
+ls (para ver la lista de archivos)
+
+ls -l (" en formato largo)
+
+ls -ltr (" ordenado por tiempo en reversa)
+
+dotnet new console -n usuario (para crear un csproj)
+
+cd usuario (para entrar al csproj)
+
+tree . (para ver los archivos dentro del arbol del csproj)
+
+dotnet run (para ejecutar el csproj)
+
+cat (copy at terminal - para ver el archivo por completo)
+
+nano (para abrir un archivo de texto modificable)
+
+grep utn /etc/passwd (para buscar texto dentro de un archivo)
+
+mongosh "ip" (nos conectamos a la bdd)
+
+mongosh "mongodb://admin:abc123@localhost:27017/?authSource=admin"
+
+show dbs (mostramos la base de datos)
+
+use geodata (cambiamos a la base de datos)
+
+show collections (mostramos las tablas / colecciones)
+
+db.Departamentos.findOne() (busca un departamento aleatorio)
+
+
+

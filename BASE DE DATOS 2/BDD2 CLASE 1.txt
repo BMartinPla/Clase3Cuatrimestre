@@ -1,0 +1,145 @@
+
+
+--
+-- CLASE 1
+--
+
+
+Persona:
+	apellido
+	nombre
+	documento
+	tipoDoc	
+	genero
+	fnac
+	estCivil
+	contacto
+	tipoCont
+
+create table genero (
+	id int not null identity (1,1) primary key,
+	nombre varchar(32) not null unique
+)
+
+create table estCivil (
+	id int not null identity (1,1) primary key,
+	nombre varchar(32) not null unique
+)
+
+create table pais (
+	id int not null identity (1,1) primary key,
+	nombre varchar(32) not null unique
+)
+
+create table tipoDoc (
+	id int not null identity (1,1) primary key,
+	pais_id integer not null,
+	nombre varchar(32) not null unique,
+
+constraint fk_pais foreign key (pais_id) references pais(id)
+)
+
+create table tipoCont (
+	id int not null identity (1,1) primary key,
+	nombre varchar(32) not null unique
+)
+
+create table persona (
+	id int not null identity (1,1) primary key,
+	apellido varchar (32) not null,
+	nombre varchar(32) not null,
+	tipoDoc_id int not null,
+	documento varchar(32) not null,
+	genero_id int not null,
+	estCivil_id int not null,
+	tipoCont_id int not null,
+	contacto varchar(64) not null,
+
+constraint fk_tipoDoc_persona foreign key (tipoDoc_id) references tipoDoc(id),
+constraint fk_genero_persona foreign key (genero_id) references genero(id),
+constraint fk_estCivil_persona foreign key (estCivil_id) references estCivil(id)
+)
+
+alter table persona
+add constraint uq_documento unique (tipoDoc_id, documento)
+
+create table contacto (
+	id int not null identity (1,1) primary key,
+	persona_id int not null,
+	tipoCont_id int not null,
+	contacto varchar(64) not null,
+	
+constraint fk_contacto_persona foreign key (persona_id) references persona(id),
+constraint fk_tipoCont_persona foreign key (tipoCont_id) references tipoCont(id)
+)
+
+insert into pais(nombre) values ('Argentina')
+
+insert into pais values ('Brasil')
+
+insert into pais values (
+	'Paraguay'),
+	('Uruguay'),
+	('Chile'),
+	('Peru'),
+	('Bolivia'),
+	('Venezuela'),
+	('Ecuador'),
+	('Colombia'),
+	('Guayana Francesa'),
+	('Guyana'),
+	('Surinam'
+)
+
+select * from pais
+
+insert into tipoDoc values (
+	1, 'dni'),
+	(1, 'pasaporte'),
+	(2, 'pasaporte de brasil'
+)
+
+select * from tipoDoc
+
+insert into genero values (
+	'Masculino'),
+	('Femenino'),
+	('No especifica'
+)
+
+select * from genero
+
+insert into estCivil values (
+	'Soltero'),
+	('Casado'),
+	('Viudo'),
+	('Prefiero no decirlo'
+)
+
+select * from estCivil
+
+insert into tipoCont values (
+	'Telefono'),
+	('Mail'
+)
+
+select * from tipoCont
+
+create table Usuario (
+	id int not null identity(1,1) primary key,
+	nombreUsuario varchar(32) unique,
+	persona_id int not null,
+	lastlogin datetime,
+
+constraint fk_usuario_persona foreign key (persona_id) references persona(id)
+)
+
+
+--
+-- CLASE 2
+--
+
+
+
+
+	

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="main.js" defer></script>
+</head>
+<body>
+    <div class="header">
+        <div style="width: 100px;"></div> <div class="brand">AppCalc</div>
+        <button id="btn-tema" class="btn-tema">☀️ Modo Claro</button>
+    </div>
+
+    <div class="contenedor-principal">
+        
+        <div class="calculadora">
+            <div class="container-marca">
+                <div class="marca" onclick="window.open('https://www.casio.com/latin/', '_blank')">CASIO</div>
+            </div>
+            <div class="container-pantalla">
+                <div class="fondo-pantalla">
+                    <div class="funciones">M / E</div>
+                    <div class="pantalla" id="pantalla" role="status" aria-live="polite">0</div>
+                </div>
+            </div>
+        <div class="container-boton">
+            <button type="button" class="boton mem">MC</button>
+            <button type="button" class="boton mem">MR</button>
+            <button type="button" class="boton mem">M+</button>
+            <button type="button" class="boton mem">M-</button>
+            <button type="button" class="boton mem">n!</button>
+
+            <button type="button" class="boton out">(</button>
+            <button type="button" class="boton out">)</button>
+            <button type="button" class="boton del">CE</button>
+            <button type="button" class="boton del">C</button>
+            <button type="button" class="boton del">DEL</button>
+
+            <button type="button" class="boton out">1/x</button>
+            <button type="button" class="boton out">x²</button>
+            <button type="button" class="boton out">²v(x)</button>
+            <button type="button" class="boton out">%</button>
+            <button type="button" class="boton out">/</button>
+
+            <button type="button" class="boton">7</button>
+            <button type="button" class="boton">8</button>
+            <button type="button" class="boton">9</button>
+            <button type="button" class="boton out">+/-</button>
+            <button type="button" class="boton out">x</button>
+
+            <button type="button" class="boton">4</button>
+            <button type="button" class="boton">5</button>
+            <button type="button" class="boton">6</button>
+            <button type="button" class="boton out coma">,</button>
+            <button type="button" class="boton out">-</button>
+
+            <button type="button" class="boton">1</button>
+            <button type="button" class="boton">2</button>
+            <button type="button" class="boton">3</button>
+            <button type="button" class="boton">0</button>
+            <button type="button" class="boton out">+</button>
+
+            <button type="button" class="boton igual span-5">=</button>
+        </div>
+    </div>
+
+        <div class="panel-historial">
+            <h3>Historial de Operaciones</h3>
+            <div class="lista-historial" id="lista-historial">
+                </div>
+            <button type="button" class="btn-limpiar" id="btn-limpiar-historial">Borrar todo</button>
+        </div>
+
+    </div>
+
+    <div class="footer">
+        <div class="made">Made with HTML + CSS</div>
+        <div class="rights" onclick="window.open('https://www.instagram.com/plabraian/', '_blank')">DERECHOS RESERVADOS</div>
+    </div>
+</body>
+</html>

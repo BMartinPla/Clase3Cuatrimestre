@@ -1,0 +1,49 @@
+CREATE TABLE Usuarios (
+    id_usuario INT PRIMARY KEY AUTO_INCREMENT,
+    nombre VARCHAR(100) NOT NULL,
+    apellido VARCHAR(100) NOT NULL,
+    dni VARCHAR(20) UNIQUE NOT NULL, -- Para la verificación de identidad
+    email VARCHAR(150) UNIQUE NOT NULL, -- Datos de contacto
+    password_hash VARCHAR(255) NOT NULL,
+    fecha_nacimiento DATE NOT NULL, -- Obligatorio para validar >= 18 años
+    rol VARCHAR(20) DEFAULT 'Usuario', -- Puede ser 'Usuario' o 'Administrador'
+    saldo DECIMAL(12, 2) DEFAULT 0.00 -- Necesario para cobrar las liquidaciones y hacer las apuestas
+);
+
+CREATE TABLE Apuestas (
+    id_apuesta INT PRIMARY KEY AUTO_INCREMENT,
+    enunciado VARCHAR(255) NOT NULL,
+    fecha_evento DATETIME NOT NULL,
+    fecha_limite DATETIME NOT NULL,
+    estado VARCHAR(20) DEFAULT 'Pendiente', -- 'Pendiente', 'Aprobada', 'Cerrada'
+    destacada BOOLEAN DEFAULT FALSE, -- Para el requerimiento de "Promocionar alguna Apuesta"
+    id_creador INT NOT NULL, -- FK al Usuario que la propuso (si es la Empresa, será un ID de Admin)
+    porcentaje_comision DECIMAL(5, 2) DEFAULT 10.00, -- 10% por defecto según el PDF
+    FOREIGN KEY (id_creador) REFERENCES Usuarios(id_usuario)
+);
+
+CREATE TABLE Pronosticos (
+    id_pronostico INT PRIMARY KEY AUTO_INCREMENT,
+    id_apuesta INT NOT NULL,
+    descripcion VARCHAR(255) NOT NULL, -- Ej: "Gana Jannik Sinner"
+    es_ganador BOOLEAN NULL, -- Será NULL hasta que el Admin cierre la apuesta y determine el ganador
+    FOREIGN KEY (id_apuesta) REFERENCES Apuestas(id_apuesta) ON DELETE CASCADE
+);
+
+CREATE TABLE Jugadas (
+    id_jugada INT PRIMARY KEY AUTO_INCREMENT,
+    id_usuario INT NOT NULL,
+    id_pronostico INT NOT NULL,
+    monto DECIMAL(12, 2) NOT NULL, -- No podrá superar los 100.000$ (se valida en el backend)
+    fecha_jugada DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (id_usuario) REFERENCES Usuarios(id_usuario),
+    FOREIGN KEY (id_pronostico) REFERENCES Pronosticos(id_pronostico)
+);
+
+CREATE TABLE Liquidaciones (
+    id_liquidacion INT PRIMARY KEY AUTO_INCREMENT,
+    id_jugada INT NOT NULL,
+    monto_ganado DECIMAL(12, 2) NOT NULL,
+    fecha_liquidacion DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (id_jugada) REFERENCES Jugadas(id_jugada)
+);

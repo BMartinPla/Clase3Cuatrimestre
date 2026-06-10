@@ -1,0 +1,41 @@
+
+body {
+    background-color: gray;
+    padding: 10px;
+    height: 100vh;
+}
+
+.container {
+    background-color: red;
+    height: 90%;
+    width: 90%;
+    text-align: center;
+    position: relative;
+    left: 5%;
+    top: 5%;
+}
+
+.rectangulo {
+    display: inline-block;
+    height: 90%;
+    width: 20%;
+    margin: 2%;
+    position: relative;
+
+}
+
+.verde {
+    background-color: green;
+}
+
+.azul {
+    background-color: blue;
+}
+
+.gris {
+    background-color: gray;
+}
+
+.negro {
+    background-color: black;
+}

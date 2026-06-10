@@ -1,0 +1,23 @@
+body {
+    margin: 0;
+    background-color: gray;
+    font-family: Trebuchet MS;
+}
+
+h1 {
+    color: gray;
+    text-align: center;
+    background-color: black;
+    margin: 0;
+}
+
+p {
+    text-align: center;
+    margin: 5px 50px;
+}
+
+a {
+    display: flex;
+    justify-content: center;
+    text-decoration: none;
+}

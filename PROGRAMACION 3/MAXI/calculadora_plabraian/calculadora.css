@@ -1,0 +1,207 @@
+body {
+    display: flex;
+    /* background: linear-gradient(to bottom, rgb(225, 255, 92), rgb(255, 172, 172)); */
+    background: linear-gradient(to bottom, #809bce, #5c82ca);
+    height: 100vh;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+    align-items: center;
+    flex-direction: column;
+    margin: 0;
+    justify-content: space-between;
+}
+
+.header {
+    min-width: 400px;
+    box-sizing: border-box;
+    padding: 15px;
+    width: 100%;
+    display: flex;
+    background-color: rgb(62, 54, 104);
+    background: linear-gradient(to bottom, rgb(62, 54, 104), rgb(38, 34, 65));
+    justify-content: center;
+    color: white;
+    text-shadow: 3px 3px 0px rgb(102, 102, 102);
+    box-shadow: 0 0 15px rgba(0,0,0,1);
+    user-select: none;
+}
+
+.brand {
+    font-size: 3em;
+}
+
+.calculadora {
+    color: white;
+    max-width: 300px;
+    display: flex;
+    flex-direction: column;
+    width: 90vw;
+    align-items: center;
+    padding: 10px;
+    background-color: rgb(62, 54, 104);
+    border-radius: 15px;
+    text-shadow: 1px 1px 0px rgb(102, 102, 102);
+    box-shadow: 0 0 15px rgba(0,0,0,1);
+    transform: scale(1.25);
+}
+
+
+.container-marca {
+    margin-bottom: 5px;
+    user-select: none;
+}
+
+.marca {
+    color: rgb(206, 206, 206);
+    text-shadow: 2px 2px 2px rgb(20, 18, 26);
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.marca:active {
+    transform: scale(0.90);
+}
+
+.container-pantalla {
+    box-sizing: border-box;
+    width: 100%;
+    background-color: rgb(29, 29, 65);
+    border-radius: 10px;
+    margin-bottom: 10px;
+    justify-content: center;
+    padding: 5px;
+    box-shadow: 0 0 5px rgba(0,0,0,1);
+    user-select: none;  
+}
+
+.fondo-pantalla {
+    display: flex;
+    color: rgba(0, 0, 0, 0.836);
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 100%;
+    background-color: rgba(224, 255, 228, 0.623);
+    border-radius: 10px;
+    padding: 1px;
+    padding-right: 5px;
+    box-shadow: 0 0 5px rgba(0,0,0,1);
+    justify-content: space-between;
+}
+
+.funciones {
+    color: rgb(34, 34, 34);
+    padding: 1px;
+    font-size: 60%;
+    align-self: flex-start;
+}
+
+.pantalla {
+    flex: 1;
+    text-align: right;
+}
+
+.container-boton {
+    box-sizing: border-box;
+    padding: 5px;
+    text-align: center;
+    gap: 12px;
+    width: 100%;
+    background-color: rgb(29, 29, 65);
+    border-radius: 10px;
+    box-shadow: 0px 0px 5px rgba(0,0,0,1);
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 1fr se adapta solo */
+}
+
+
+.boton {
+    background-color: rgb(165, 165, 165);
+    border-radius: 10px;
+    box-shadow: 0 0 5px rgba(0,0,0,1);
+    cursor: pointer;
+    user-select: none;
+    padding: 2px;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.del {
+    background-color: rgba(255, 75, 129, 0.5);
+}
+
+.out {
+    background-color: rgb(112, 112, 112);
+}
+
+.igual {
+    font-size: 140%;
+    line-height: 0;
+    padding-top: 9px;
+    display: flex;
+    justify-content: center;
+}
+
+.coma {
+    line-height: 0;
+    padding-top: 7px;
+    display: flex;
+    justify-content: center;
+}
+
+.boton:hover {
+    background-color: #ffffff;
+}
+
+.boton:active {
+    background-color: #000000;
+    transform: scale(0.90);
+}
+
+.footer {
+    min-width: 400px;
+    box-sizing: border-box;
+    padding: 5px;
+    width: 100%;
+    display: flex;
+    background-color: rgb(62, 54, 104);
+    background: linear-gradient(to bottom, rgb(62, 54, 104), rgb(38, 34, 65));
+    justify-content: center;
+    color: white;
+    text-shadow: 1px 1px 0px rgb(102, 102, 102);
+    box-shadow: 0 0 15px rgba(0,0,0,1);
+    justify-content: space-between;
+    user-select: none;
+}
+
+.rights {
+    cursor: pointer;
+}
+
+@media screen and (max-width: 425px) {
+
+    .header {
+        transform: scale(0.85);
+    }
+    .calculadora {
+        transform: scale(1);
+    }
+    .footer {
+        transform: scale(0.85);
+        font-size: 80%;
+    }
+
+}
+
+@media screen and (max-height: 500px) {
+
+    .header {
+        transform: scale(0.85);
+    }
+    .calculadora {
+        transform: scale(1);
+    }
+    .footer {
+        transform: scale(0.85);
+        font-size: 80%;
+    }
+
+}

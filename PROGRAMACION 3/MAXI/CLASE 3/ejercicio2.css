@@ -1,0 +1,29 @@
+
+body {
+    background-color: #808080;
+    margin: 20px;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.cuadrado-rojo {
+    width: 500px;
+    height: 500px;
+    padding: 10px;
+    background-color: #ff0000;
+    border: 3px solid black; 
+    justify-content: center;
+    display: flex;
+    align-items: center;
+}
+
+
+.cuadrado-verde {
+    width: 400px;
+    height: 400px;
+    background-color: #00FF00;
+}
+

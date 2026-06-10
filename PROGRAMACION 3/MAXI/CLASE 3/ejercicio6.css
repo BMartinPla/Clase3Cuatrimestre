@@ -1,0 +1,32 @@
+
+body {
+    background-color: gray;
+    padding: 10%;
+    height: 100vh;
+}
+
+.container {
+    background-color: red;
+    width: 90%;
+    height: 90%;
+    text-align: center;
+}
+
+.cuadrado {
+    display: inline-block;
+    position: relative;
+    width: 40%;
+    height: 40%;
+    bottom: 5%;
+    margin: 2%;
+    top: 25%;
+
+}
+
+.azul {
+    background-color: blue;
+}
+
+.verde {
+    background-color: green;
+}

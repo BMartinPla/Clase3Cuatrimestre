@@ -1,0 +1,50 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    h1 {
+      color: rgb(23, 0, 128);
+    }
+  </style>
+</head>
+<body>
+  <h1>Hola Mundo</h1>
+  <button onclick="alert('Hola Mundo!')">Presioname</button>
+  <!-- Evento onclick -->
+  <p onclick="alert('¡Has hecho clic!')">
+      Haz clic aquí para ver un mensaje cuando hagas clic con el botón izquierdo del ratón.
+  </p>
+  <!-- Evento ondblclick -->
+  <p ondblclick="alert('¡Doble clic!')">
+      Haz doble clic aquí para ver un mensaje.
+  </p>
+  <!-- Evento onmousedown -->
+  <p onmousedown="alert('¡Mouse presionado!')">
+      Presiona el botón del ratón aquí para ver un mensaje.
+  </p>
+  <!-- Evento onmouseup -->
+  <p onmouseup="alert('¡Mouse liberado!')">
+      Libera el botón del ratón aquí para ver un mensaje.
+  </p>
+  <!-- Evento onmouseenter -->
+  <p onmouseenter="alert('¡Mouse entrando!')">
+      Mueve el cursor del ratón sobre este párrafo para ver un mensaje.
+  </p>
+  <!-- Evento onmouseleave -->
+  <p onmouseleave="alert('¡Mouse saliendo!')">
+      Mueve el cursor del ratón fuera de este párrafo para ver un mensaje.
+  </p>
+  <!-- Evento onkeydown -->
+  <textarea onkeydown="alert('Se ha pulsado una tecla')" placeholder="Presiona una tecla"></textarea>
+  <!-- Evento onkeyup -->
+  <input type="text" onkeyup="alert('Se ha liberado una tecla')" placeholder="Libera una tecla">
+  <!-- Usando un elemento de imagen para el evento onload -->
+  <img src="imagen.jpg" height="200px" onload="alert('La imagen se ha cargado correctamente')" onerror="alert('Error al cargar la imagen')">
+</body>
+</html>
+
+

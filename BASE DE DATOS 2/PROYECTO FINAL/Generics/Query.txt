@@ -1,0 +1,57 @@
+-- Insertar paises latinoamerica
+Begin 
+	declare @id int
+	EXEC I_Pais @nombre='Argentina', @id=@id OUTPUT;
+	EXEC I_Pais @nombre='Bolivia', @id=@id OUTPUT;
+	EXEC I_Pais @nombre='Brasil', @id=@id OUTPUT;
+	EXEC I_Pais @nombre='Chile', @id=@id OUTPUT;
+	EXEC I_Pais @nombre='Colombia', @id=@id OUTPUT;
+	EXEC I_Pais @nombre='Costa Rica', @id=@id OUTPUT;
+	EXEC I_Pais @nombre='Cuba', @id=@id OUTPUT;
+	EXEC I_Pais @nombre='Ecuador', @id=@id OUTPUT;
+	EXEC I_Pais @nombre='El Salvador', @id=@id OUTPUT;
+	EXEC I_Pais @nombre='Guatemala', @id=@id OUTPUT;
+	EXEC I_Pais @nombre='Honduras', @id=@id OUTPUT;
+	EXEC I_Pais @nombre='México', @id=@id OUTPUT;
+	EXEC I_Pais @nombre='Nicaragua', @id=@id OUTPUT;
+	EXEC I_Pais @nombre='Panamá', @id=@id OUTPUT;
+	EXEC I_Pais @nombre='Paraguay', @id=@id OUTPUT;
+	EXEC I_Pais @nombre='Perú', @id=@id OUTPUT;
+	EXEC I_Pais @nombre='República Dominicana', @id=@id OUTPUT;
+	EXEC I_Pais @nombre='Uruguay', @id=@id OUTPUT;
+	EXEC I_Pais @nombre='Venezuela', @id=@id OUTPUT;
+	select @id
+End
+
+select * from pais
+
+-- Insertar generos
+Begin
+	declare @id int
+	exec I_Genero @nombre='Masculino', @id=@id OUTPUT;
+	exec I_Genero @nombre='Femenino', @id=@id OUTPUT;
+	exec I_Genero @nombre='Otro', @id=@id OUTPUT;
+	select @id
+End
+
+select * from genero
+
+-- Vistas
+create view vPais as
+select id as paisid, nombre
+from Pais;
+
+select * from vPais
+
+-- Vistas complejas
+create view vTipoDocumento as
+select
+	td.id as tipodocumentoid,
+	td.nombre as tipodocumento,
+	p.id as pais_id,
+	p.nombre as nombrepais
+from TipoDocumento td
+inner join Pais p
+	on td.pais_id = p.id;
+
+select * from vTipoDocumento

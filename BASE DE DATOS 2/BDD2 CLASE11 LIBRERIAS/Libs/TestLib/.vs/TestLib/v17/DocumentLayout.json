@@ -1,0 +1,37 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\braian.pla.FRSN\\Desktop\\BASE DE DATOS 2\\BDD2 CLASE11 LIBRERIAS\\Libs\\TestLib\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{D1DE1572-BCA9-4086-8E68-DC494DCCF533}|TestLib.csproj|c:\\users\\braian.pla.frsn\\desktop\\base de datos 2\\bdd2 clase11 librerias\\libs\\testlib\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D1DE1572-BCA9-4086-8E68-DC494DCCF533}|TestLib.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\braian.pla.FRSN\\Desktop\\BASE DE DATOS 2\\BDD2 CLASE11 LIBRERIAS\\Libs\\TestLib\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Users\\braian.pla.FRSN\\Desktop\\BASE DE DATOS 2\\BDD2 CLASE11 LIBRERIAS\\Libs\\TestLib\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAgwAYAAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-05T20:12:56.908Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

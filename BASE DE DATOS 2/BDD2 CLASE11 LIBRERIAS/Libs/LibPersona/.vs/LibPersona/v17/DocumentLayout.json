@@ -1,0 +1,197 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\braian.pla.FRSN\\Desktop\\BASE DE DATOS 2\\BDD2 CLASE11 LIBRERIAS\\Libs\\LibPersona\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{65EF86EF-7C8B-41CA-9AE0-18A46181EF3E}|LibPersona.csproj|c:\\users\\braian.pla.frsn\\desktop\\base de datos 2\\bdd2 clase11 librerias\\libs\\libpersona\\tipodomicilio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{65EF86EF-7C8B-41CA-9AE0-18A46181EF3E}|LibPersona.csproj|solutionrelative:tipodomicilio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{65EF86EF-7C8B-41CA-9AE0-18A46181EF3E}|LibPersona.csproj|c:\\users\\braian.pla.frsn\\desktop\\base de datos 2\\bdd2 clase11 librerias\\libs\\libpersona\\tipodocumento.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{65EF86EF-7C8B-41CA-9AE0-18A46181EF3E}|LibPersona.csproj|solutionrelative:tipodocumento.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{65EF86EF-7C8B-41CA-9AE0-18A46181EF3E}|LibPersona.csproj|c:\\users\\braian.pla.frsn\\desktop\\base de datos 2\\bdd2 clase11 librerias\\libs\\libpersona\\tipocontacto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{65EF86EF-7C8B-41CA-9AE0-18A46181EF3E}|LibPersona.csproj|solutionrelative:tipocontacto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{65EF86EF-7C8B-41CA-9AE0-18A46181EF3E}|LibPersona.csproj|c:\\users\\braian.pla.frsn\\desktop\\base de datos 2\\bdd2 clase11 librerias\\libs\\libpersona\\provincia.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{65EF86EF-7C8B-41CA-9AE0-18A46181EF3E}|LibPersona.csproj|solutionrelative:provincia.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{65EF86EF-7C8B-41CA-9AE0-18A46181EF3E}|LibPersona.csproj|c:\\users\\braian.pla.frsn\\desktop\\base de datos 2\\bdd2 clase11 librerias\\libs\\libpersona\\persona.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{65EF86EF-7C8B-41CA-9AE0-18A46181EF3E}|LibPersona.csproj|solutionrelative:persona.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{65EF86EF-7C8B-41CA-9AE0-18A46181EF3E}|LibPersona.csproj|c:\\users\\braian.pla.frsn\\desktop\\base de datos 2\\bdd2 clase11 librerias\\libs\\libpersona\\pais.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{65EF86EF-7C8B-41CA-9AE0-18A46181EF3E}|LibPersona.csproj|solutionrelative:pais.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{65EF86EF-7C8B-41CA-9AE0-18A46181EF3E}|LibPersona.csproj|c:\\users\\braian.pla.frsn\\desktop\\base de datos 2\\bdd2 clase11 librerias\\libs\\libpersona\\localidad.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{65EF86EF-7C8B-41CA-9AE0-18A46181EF3E}|LibPersona.csproj|solutionrelative:localidad.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{65EF86EF-7C8B-41CA-9AE0-18A46181EF3E}|LibPersona.csproj|c:\\users\\braian.pla.frsn\\desktop\\base de datos 2\\bdd2 clase11 librerias\\libs\\libpersona\\genero.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{65EF86EF-7C8B-41CA-9AE0-18A46181EF3E}|LibPersona.csproj|solutionrelative:genero.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{65EF86EF-7C8B-41CA-9AE0-18A46181EF3E}|LibPersona.csproj|c:\\users\\braian.pla.frsn\\desktop\\base de datos 2\\bdd2 clase11 librerias\\libs\\libpersona\\estadocivil.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{65EF86EF-7C8B-41CA-9AE0-18A46181EF3E}|LibPersona.csproj|solutionrelative:estadocivil.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{65EF86EF-7C8B-41CA-9AE0-18A46181EF3E}|LibPersona.csproj|c:\\users\\braian.pla.frsn\\desktop\\base de datos 2\\bdd2 clase11 librerias\\libs\\libpersona\\domicilio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{65EF86EF-7C8B-41CA-9AE0-18A46181EF3E}|LibPersona.csproj|solutionrelative:domicilio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{65EF86EF-7C8B-41CA-9AE0-18A46181EF3E}|LibPersona.csproj|c:\\users\\braian.pla.frsn\\desktop\\base de datos 2\\bdd2 clase11 librerias\\libs\\libpersona\\contacto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{65EF86EF-7C8B-41CA-9AE0-18A46181EF3E}|LibPersona.csproj|solutionrelative:contacto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "TipoDomicilio.cs",
+              "DocumentMoniker": "C:\\Users\\braian.pla.FRSN\\Desktop\\BASE DE DATOS 2\\BDD2 CLASE11 LIBRERIAS\\Libs\\LibPersona\\TipoDomicilio.cs",
+              "RelativeDocumentMoniker": "TipoDomicilio.cs",
+              "ToolTip": "C:\\Users\\braian.pla.FRSN\\Desktop\\BASE DE DATOS 2\\BDD2 CLASE11 LIBRERIAS\\Libs\\LibPersona\\TipoDomicilio.cs",
+              "RelativeToolTip": "TipoDomicilio.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAABBAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-05T20:34:22.161Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "TipoContacto.cs",
+              "DocumentMoniker": "C:\\Users\\braian.pla.FRSN\\Desktop\\BASE DE DATOS 2\\BDD2 CLASE11 LIBRERIAS\\Libs\\LibPersona\\TipoContacto.cs",
+              "RelativeDocumentMoniker": "TipoContacto.cs",
+              "ToolTip": "C:\\Users\\braian.pla.FRSN\\Desktop\\BASE DE DATOS 2\\BDD2 CLASE11 LIBRERIAS\\Libs\\LibPersona\\TipoContacto.cs",
+              "RelativeToolTip": "TipoContacto.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAwwA4AAABAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-05T20:34:09.566Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Provincia.cs",
+              "DocumentMoniker": "C:\\Users\\braian.pla.FRSN\\Desktop\\BASE DE DATOS 2\\BDD2 CLASE11 LIBRERIAS\\Libs\\LibPersona\\Provincia.cs",
+              "RelativeDocumentMoniker": "Provincia.cs",
+              "ToolTip": "C:\\Users\\braian.pla.FRSN\\Desktop\\BASE DE DATOS 2\\BDD2 CLASE11 LIBRERIAS\\Libs\\LibPersona\\Provincia.cs",
+              "RelativeToolTip": "Provincia.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAwwBAAAABFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-05T20:33:59.021Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Pais.cs",
+              "DocumentMoniker": "C:\\Users\\braian.pla.FRSN\\Desktop\\BASE DE DATOS 2\\BDD2 CLASE11 LIBRERIAS\\Libs\\LibPersona\\Pais.cs",
+              "RelativeDocumentMoniker": "Pais.cs",
+              "ToolTip": "C:\\Users\\braian.pla.FRSN\\Desktop\\BASE DE DATOS 2\\BDD2 CLASE11 LIBRERIAS\\Libs\\LibPersona\\Pais.cs",
+              "RelativeToolTip": "Pais.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAIwA8AAAA3AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-05T20:33:02.017Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Localidad.cs",
+              "DocumentMoniker": "C:\\Users\\braian.pla.FRSN\\Desktop\\BASE DE DATOS 2\\BDD2 CLASE11 LIBRERIAS\\Libs\\LibPersona\\Localidad.cs",
+              "RelativeDocumentMoniker": "Localidad.cs",
+              "ToolTip": "C:\\Users\\braian.pla.FRSN\\Desktop\\BASE DE DATOS 2\\BDD2 CLASE11 LIBRERIAS\\Libs\\LibPersona\\Localidad.cs",
+              "RelativeToolTip": "Localidad.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAwwBAAAABKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-05T20:32:49.837Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Genero.cs",
+              "DocumentMoniker": "C:\\Users\\braian.pla.FRSN\\Desktop\\BASE DE DATOS 2\\BDD2 CLASE11 LIBRERIAS\\Libs\\LibPersona\\Genero.cs",
+              "RelativeDocumentMoniker": "Genero.cs",
+              "ToolTip": "C:\\Users\\braian.pla.FRSN\\Desktop\\BASE DE DATOS 2\\BDD2 CLASE11 LIBRERIAS\\Libs\\LibPersona\\Genero.cs",
+              "RelativeToolTip": "Genero.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAwwA8AAAA5AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-05T20:32:38.882Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "EstadoCivil.cs",
+              "DocumentMoniker": "C:\\Users\\braian.pla.FRSN\\Desktop\\BASE DE DATOS 2\\BDD2 CLASE11 LIBRERIAS\\Libs\\LibPersona\\EstadoCivil.cs",
+              "RelativeDocumentMoniker": "EstadoCivil.cs",
+              "ToolTip": "C:\\Users\\braian.pla.FRSN\\Desktop\\BASE DE DATOS 2\\BDD2 CLASE11 LIBRERIAS\\Libs\\LibPersona\\EstadoCivil.cs",
+              "RelativeToolTip": "EstadoCivil.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAwwA4AAAA/AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-05T20:32:23.081Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "TipoDocumento.cs",
+              "DocumentMoniker": "C:\\Users\\braian.pla.FRSN\\Desktop\\BASE DE DATOS 2\\BDD2 CLASE11 LIBRERIAS\\Libs\\LibPersona\\TipoDocumento.cs",
+              "RelativeDocumentMoniker": "TipoDocumento.cs",
+              "ToolTip": "C:\\Users\\braian.pla.FRSN\\Desktop\\BASE DE DATOS 2\\BDD2 CLASE11 LIBRERIAS\\Libs\\LibPersona\\TipoDocumento.cs",
+              "RelativeToolTip": "TipoDocumento.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAIwBAAAABKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-05T20:30:34.33Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Domicilio.cs",
+              "DocumentMoniker": "C:\\Users\\braian.pla.FRSN\\Desktop\\BASE DE DATOS 2\\BDD2 CLASE11 LIBRERIAS\\Libs\\LibPersona\\Domicilio.cs",
+              "RelativeDocumentMoniker": "Domicilio.cs",
+              "ToolTip": "C:\\Users\\braian.pla.FRSN\\Desktop\\BASE DE DATOS 2\\BDD2 CLASE11 LIBRERIAS\\Libs\\LibPersona\\Domicilio.cs",
+              "RelativeToolTip": "Domicilio.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAcwBIAAABgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-05T20:10:02.274Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Persona.cs",
+              "DocumentMoniker": "C:\\Users\\braian.pla.FRSN\\Desktop\\BASE DE DATOS 2\\BDD2 CLASE11 LIBRERIAS\\Libs\\LibPersona\\Persona.cs",
+              "RelativeDocumentMoniker": "Persona.cs",
+              "ToolTip": "C:\\Users\\braian.pla.FRSN\\Desktop\\BASE DE DATOS 2\\BDD2 CLASE11 LIBRERIAS\\Libs\\LibPersona\\Persona.cs",
+              "RelativeToolTip": "Persona.cs",
+              "ViewState": "AgIAABsAAAAAAAAAAAAAABsAAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-05T20:09:43.273Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Contacto.cs",
+              "DocumentMoniker": "C:\\Users\\braian.pla.FRSN\\Desktop\\BASE DE DATOS 2\\BDD2 CLASE11 LIBRERIAS\\Libs\\LibPersona\\Contacto.cs",
+              "RelativeDocumentMoniker": "Contacto.cs",
+              "ToolTip": "C:\\Users\\braian.pla.FRSN\\Desktop\\BASE DE DATOS 2\\BDD2 CLASE11 LIBRERIAS\\Libs\\LibPersona\\Contacto.cs",
+              "RelativeToolTip": "Contacto.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAIwA4AAABQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-05T18:58:55.771Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

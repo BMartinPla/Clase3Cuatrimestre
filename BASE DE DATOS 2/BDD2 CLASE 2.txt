@@ -1,0 +1,129 @@
+
+
+--
+-- CLASE 2
+--
+
+
+create table genero (
+	id integer primary key autoincrement,
+	nombre varchar(32) not null unique
+);
+
+create table estCivil (
+	id integer primary key autoincrement,
+	nombre varchar(32) not null unique
+);
+
+create table pais (
+	id integer primary key autoincrement,
+	nombre varchar(32) not null unique
+);
+
+create table tipoDoc (
+	id integer primary key autoincrement,
+	pais_id integer not null,
+	nombre varchar(32) not null unique,
+
+constraint fk_pais foreign key (pais_id) references pais(id)
+);
+
+create table tipoCont (
+	id integer primary key autoincrement,
+	nombre varchar(32) not null unique
+);
+
+create table persona (
+	id integer primary key autoincrement,
+	apellido varchar (32) not null,
+	nombre varchar(32) not null,
+	tipoDoc_id integer not null,
+	documento varchar(32) not null,
+	genero_id integer not null,
+	estCivil_id integer not null,
+	tipoCont_id integer not null,
+	contacto varchar(64) not null,
+
+constraint fk_tipoDoc_persona foreign key (tipoDoc_id) references tipoDoc(id),
+constraint fk_genero_persona foreign key (genero_id) references genero(id),
+constraint fk_estCivil_persona foreign key (estCivil_id) references estCivil(id),
+constraint uq_documento unique (tipoDoc_id, documento)
+);
+
+
+create table contacto (
+	id integer primary key autoincrement,
+	persona_id integer not null,
+	tipoCont_id integer not null,
+	contacto varchar(64) not null,
+	
+constraint fk_contacto_persona foreign key (persona_id) references persona(id),
+constraint fk_tipoCont_persona foreign key (tipoCont_id) references tipoCont(id)
+);
+
+insert into pais(nombre) values ('Argentina');
+
+insert into pais(nombre) values ('Brasil');
+
+insert into pais(nombre) values (
+	'Paraguay'),
+	('Uruguay'),
+	('Chile'),
+	('Peru'),
+	('Bolivia'),
+	('Venezuela'),
+	('Ecuador'),
+	('Colombia'),
+	('Guayana Francesa'),
+	('Guyana'),
+	('Surinam'
+);
+
+select * from pais;
+
+insert into tipoDoc(pais_id, nombre) values (
+	1, 'dni'),
+	(1, 'pasaporte'),
+	(2, 'pasaporte de brasil'
+);
+
+select * from tipoDoc;
+
+insert into genero(nombre) values (
+	'Masculino'),
+	('Femenino'),
+	('No especifica'
+);
+
+select * from genero;
+
+insert into estCivil(nombre) values (
+	'Soltero'),
+	('Casado'),
+	('Viudo'),
+	('Prefiero no decirlo'
+);
+
+select * from estCivil;
+
+insert into tipoCont(nombre) values (
+	'Telefono'),
+	('Mail'
+);
+
+select * from tipoCont;
+
+create table Usuario (
+	id integer primary key autoincrement,
+	nombreUsuario varchar(32) unique,
+	persona_id integer not null,
+	lastlogin datetime,
+
+constraint fk_usuario_persona foreign key (persona_id) references persona(id)
+);
+
+
+
+
+
+	

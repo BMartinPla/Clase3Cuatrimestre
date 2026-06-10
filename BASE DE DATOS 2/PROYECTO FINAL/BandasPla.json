@@ -1,0 +1,256 @@
+[
+    {
+        "nombre": "The Offspring",
+        "anio_inicio": 1984,
+        "anio_fin": null,
+        "integrantes": [
+            {
+                "integrante": {
+                    "nombre": "Dexter Holland",
+                    "instrumentos": [
+                        { "nombre": "voz" },
+                        { "nombre": "guitarra" },
+                        { "nombre": "teclados" }
+                    ],
+                    "anio_nacimiento": 1965
+                }
+            },
+            {
+                "integrante": {
+                    "nombre": "Noodles",
+                    "instrumentos": [
+                        { "nombre": "guitarra" },
+                        { "nombre": "voz" }
+                    ],
+                    "anio_nacimiento": 1963
+                }
+            },
+            {
+                "integrante": {
+                    "nombre": "Greg K.",
+                    "instrumentos": [
+                        { "nombre": "bajo" },
+                        { "nombre": "voz" }
+                    ],
+                    "anio_nacimiento": 1965
+                }
+            },
+            {
+                "integrante": {
+                    "nombre": "Ron Welty",
+                    "instrumentos": [
+                        { "nombre": "bateria" }
+                    ],
+                    "anio_nacimiento": 1971
+                }
+            }
+        ],
+        "exitos": [
+            "Why You Don't Get A Job?",
+            "You're Gonna Go Far, Kid",
+            "The Kids Aren't Alright"
+        ],
+        "estilos": [
+            "Punk Rock",
+            "Skate Punk",
+            "Pop Punk"
+        ]
+    },
+    {
+        "nombre": "AC/DC",
+        "anio_inicio": 1973,
+        "anio_fin": null,
+        "integrantes": [
+            {
+                "integrante": {
+                    "nombre": "Angus Young",
+                    "instrumentos": [
+                        { "nombre": "guitarra" }
+                    ],
+                    "anio_nacimiento": 1955
+                }
+            },
+            {
+                "integrante": {
+                    "nombre": "Brian Johnson",
+                    "instrumentos": [
+                        { "nombre": "voz" }
+                    ],
+                    "anio_nacimiento": 1947
+                }
+            },
+            {
+                "integrante": {
+                    "nombre": "Cliff Williams",
+                    "instrumentos": [
+                        { "nombre": "bajo" },
+                        { "nombre": "voz" }
+                    ],
+                    "anio_nacimiento": 1949
+                }
+            },
+            {
+                "integrante": {
+                    "nombre": "Phil Rudd",
+                    "instrumentos": [
+                        { "nombre": "bateria" }
+                    ],
+                    "anio_nacimiento": 1954
+                }
+            }
+        ],
+        "exitos": [
+            "Thunderstruck",
+            "Highway to Hell",
+            "Back in Black"
+        ],
+        "estilos": [
+            "Hard Rock",
+            "Heavy Metal",
+            "Blues Rock"
+        ]
+    },
+    {
+        "nombre": "Twenty One Pilots",
+        "anio_inicio": 2009,
+        "anio_fin": null,
+        "integrantes": [
+            {
+                "integrante": {
+                    "nombre": "Tyler Joseph",
+                    "instrumentos": [
+                        { "nombre": "voz" },
+                        { "nombre": "teclados" },
+                        { "nombre": "bajo" }
+                    ],
+                    "anio_nacimiento": 1988
+                }
+            },
+            {
+                "integrante": {
+                    "nombre": "Josh Dun",
+                    "instrumentos": [
+                        { "nombre": "bateria" },
+                        { "nombre": "trompeta" }
+                    ],
+                    "anio_nacimiento": 1988
+                }
+            }
+        ],
+        "exitos": [
+            "Stressed Out",
+            "Heathens",
+            "Ride"
+        ],
+        "estilos": [
+            "Alternative Hip Hop",
+            "Electropop",
+            "Indie Pop"
+        ]
+    },
+    {
+        "nombre": "El Cuarteto de Nos",
+        "anio_inicio": 1984,
+        "anio_fin": null,
+        "integrantes": [
+            {
+                "integrante": {
+                    "nombre": "Roberto Musso",
+                    "instrumentos": [
+                        { "nombre": "voz" },
+                        { "nombre": "guitarra" }
+                    ],
+                    "anio_nacimiento": 1962
+                }
+            },
+            {
+                "integrante": {
+                    "nombre": "Santiago Tavella",
+                    "instrumentos": [
+                        { "nombre": "bajo" },
+                        { "nombre": "voz" }
+                    ],
+                    "anio_nacimiento": 1961
+                }
+            },
+            {
+                "integrante": {
+                    "nombre": "Álvaro Pintos",
+                    "instrumentos": [
+                        { "nombre": "bateria" },
+                        { "nombre": "voz" }
+                    ],
+                    "anio_nacimiento": 1964
+                }
+            }
+        ],
+        "exitos": [
+            "Yendo a la casa de Damián",
+            "Ya no sé qué hacer conmigo",
+            "Buen día Benito"
+        ],
+        "estilos": [
+            "Rock Alternativo",
+            "Rap Rock",
+            "Pop Rock",
+            "Rock Cómico"
+        ]
+    },
+    {
+        "nombre": "Intoxicados",
+        "anio_inicio": 2000,
+        "anio_fin": 2009,
+        "integrantes": [
+            {
+                "integrante": {
+                    "nombre": "Cristian \"Pity\" Álvarez",
+                    "instrumentos": [
+                        { "nombre": "voz" },
+                        { "nombre": "guitarra" }
+                    ],
+                    "anio_nacimiento": 1972
+                }
+            },
+            {
+                "integrante": {
+                    "nombre": "Felipe Barrozo",
+                    "instrumentos": [
+                        { "nombre": "guitarra" },
+                        { "nombre": "voz" }
+                    ],
+                    "anio_nacimiento": 1984
+                }
+            },
+            {
+                "integrante": {
+                    "nombre": "Jorge Rossi",
+                    "instrumentos": [
+                        { "nombre": "bajo" },
+                        { "nombre": "voz" }
+                    ],
+                    "anio_nacimiento": 1974
+                }
+            },
+            {
+                "integrante": {
+                    "nombre": "Abel Meyer",
+                    "instrumentos": [
+                        { "nombre": "bateria" }
+                    ],
+                    "anio_nacimiento": 1972
+                }
+            }
+        ],
+        "exitos": [
+            "Señor Kioskero",
+            "Homero",
+            "Nunca quise"
+        ],
+        "estilos": [
+            "Rock and Roll",
+            "Rock Alternativo",
+            "Reggae Rock",
+            "Hip Hop"
+        ]
+    }
+]

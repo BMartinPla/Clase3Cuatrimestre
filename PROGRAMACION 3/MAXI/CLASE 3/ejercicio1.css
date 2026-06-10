@@ -1,0 +1,17 @@
+/* Estilos para el fondo */
+body {
+    background-color: #808080;
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.cuadrado-verde {
+    width: 500px;
+    height: 500px;
+    background-color: #00FF00;
+    border: 4px solid black; 
+}
