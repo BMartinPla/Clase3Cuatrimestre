@@ -1,0 +1,94 @@
+@baseUrl = http://localhost:3000/api
+
+### ==========================================
+### PRUEBAS CRUD - ENTIDAD: CLIENTES
+### ==========================================
+
+### 1. Obtener todos los clientes (Read)
+GET {{baseUrl}}/clientes
+Accept: application/json
+
+### 2. Obtener un cliente específico por ID (Read)
+GET {{baseUrl}}/clientes/1
+Accept: application/json
+
+### 3. Crear un nuevo cliente (Create)
+POST {{baseUrl}}/clientes
+Content-Type: application/json
+
+{
+    "cliente": 1,
+    "apellido_razon_social": "Pérez S.A.",
+    "nombre": "Juan",
+    "tipo_persona": "JUR",
+    "cuit": "20-12345678-9",
+    "dni": "12345678",
+    "telfono": "1123456789",
+    "mail": "juan@perezsa.com",
+    "estado": "ACT"
+}
+
+### 4. Actualizar un cliente existente (Update)
+PUT {{baseUrl}}/clientes/1
+Content-Type: application/json
+
+{
+    "apellido_razon_social": "Pérez Hermanos S.A.",
+    "nombre": "Juan Carlos",
+    "tipo_persona": "JUR",
+    "cuit": "20-12345678-9",
+    "dni": "12345678",
+    "telfono": "1198765432",
+    "mail": "juancarlos@perezsa.com",
+    "estado": "ACT"
+}
+
+### 5. Eliminar un cliente (Delete)
+DELETE {{baseUrl}}/clientes/1
+
+
+### ==========================================
+### PRUEBAS CRUD - ENTIDAD: PRODUCTOS
+### ==========================================
+
+### 1. Obtener todos los productos (Read)
+GET {{baseUrl}}/productos
+Accept: application/json
+
+### 2. Obtener un producto específico por ID (Read)
+GET {{baseUrl}}/productos/1001
+Accept: application/json
+
+### 3. Crear un nuevo producto (Create)
+POST {{baseUrl}}/productos
+Content-Type: application/json
+
+{
+    "producto": 1001,
+    "descripcion": "Teclado Mecánico RGB",
+    "marca": 10,
+    "grupo": "PER",
+    "tipo": "TEC",
+    "cantidad": 50.00,
+    "punto_pedido": 10.00,
+    "precio_unitario": 85000.50,
+    "estado": "ACT"
+}
+
+### 4. Actualizar un producto existente (Update)
+PUT {{baseUrl}}/productos/1001
+Content-Type: application/json
+
+{
+    "descripcion": "Teclado Mecánico Pro RGB",
+    "marca": 10,
+    "grupo": "PER",
+    "tipo": "TEC",
+    "cantidad": 45.00,
+    "punto_pedido": 12.00,
+    "precio_unitario": 89999.99,
+    "estado": "ACT"
+}
+
+### 5. Eliminar un producto (Delete)
+DELETE {{baseUrl}}/productos/1001
