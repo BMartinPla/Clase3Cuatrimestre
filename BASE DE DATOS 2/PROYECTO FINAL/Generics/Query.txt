@@ -36,12 +36,54 @@ End
 
 select * from genero
 
--- Vistas
+-- Insertar tipo doc
+Begin
+	declare @id int
+	exec I_TipoDocumento @pais_id=1, @nombre='DNI', @id=@id output;
+	exec I_TipoDocumento @pais_id=1, @nombre='Pasaporte', @id=@id output;
+	exec I_TipoDocumento @pais_id=1, @nombre='Cedula', @id=@id output;
+End;
+
+select * from TipoDocumento
+
+-- Vista de Pais
 create view vPais as
 select id as paisid, nombre
 from Pais;
 
 select * from vPais
+
+-- Vista de Estado Civil
+CREATE VIEW [dbo].[vEstadoCivil] AS
+SELECT 
+    id AS estadocivilid, 
+    nombre AS estadocivil
+FROM EstadoCivil;
+GO
+
+-- Vista de Género
+CREATE VIEW [dbo].[vGenero] AS
+SELECT 
+    id AS generoid, 
+    nombre AS genero
+FROM Genero;
+GO
+
+-- Vista de Tipo de Contacto
+CREATE VIEW [dbo].[vTipoContacto] AS
+SELECT 
+    id AS tipocontactoid, 
+    nombre AS tipocontacto
+FROM TipoContacto;
+GO
+
+-- Vista de Tipo de Domicilio
+CREATE VIEW [dbo].[vTipoDomicilio] AS
+SELECT 
+    id AS tipodomicilioid, 
+    nombre AS tipodomicilio
+FROM TipoDomicilio;
+GO
 
 -- Vistas complejas
 create view vTipoDocumento as
@@ -55,3 +97,350 @@ inner join Pais p
 	on td.pais_id = p.id;
 
 select * from vTipoDocumento
+
+-- Vista de Provincia
+CREATE VIEW [dbo].[vProvincia] AS
+SELECT
+    pr.id AS provinciaid,
+    pr.nombre AS provincia,
+    p.id AS pais_id,
+    p.nombre AS nombrepais
+FROM Provincia pr
+INNER JOIN Pais p ON pr.pais_id = p.id;
+GO
+
+-- Vista de Localidad (Se trae también Provincia y País para que quede completa)
+CREATE VIEW [dbo].[vLocalidad] AS
+SELECT
+    l.id AS localidadid,
+    l.nombre AS localidad,
+    pr.id AS provincia_id,
+    pr.nombre AS nombreprovincia,
+    p.id AS pais_id,
+    p.nombre AS nombrepais
+FROM Localidad l
+INNER JOIN Provincia pr ON l.provincia_id = pr.id
+INNER JOIN Pais p ON pr.pais_id = p.id;
+GO
+
+-- Vista de Persona
+CREATE VIEW [dbo].[vPersona] AS
+SELECT
+    p.id AS personaid,
+    p.nombre AS nombre,
+    p.apellido AS apellido,
+    p.documento AS documento,
+    p.fnacto AS fnacto,
+    td.id AS tipodocumento_id,
+    td.nombre AS nombretipodocumento,
+    g.id AS genero_id,
+    g.nombre AS nombregenero,
+    ec.id AS estadocivil_id,
+    ec.nombre AS nombreestadocivil
+FROM Persona p
+INNER JOIN TipoDocumento td ON p.tipodocumento_id = td.id
+INNER JOIN Genero g ON p.genero_id = g.id
+INNER JOIN EstadoCivil ec ON p.estadocivil_id = ec.id;
+GO
+
+-- Vista de Contacto
+CREATE VIEW [dbo].[vContacto] AS
+SELECT
+    c.id AS contactoid,
+    c.contacto AS contacto,
+    tc.id AS tipocontacto_id,
+    tc.nombre AS nombretipocontacto,
+    p.id AS persona_id,
+    p.nombre AS nombrepersona,
+    p.apellido AS apellidopersona
+FROM Contacto c
+INNER JOIN TipoContacto tc ON c.tipocontacto_id = tc.id
+INNER JOIN Persona p ON c.persona_id = p.id;
+GO
+
+-- Vista de Domicilio
+CREATE VIEW [dbo].[vDomicilio] AS
+SELECT
+    d.id AS domicilioid,
+    d.direccion AS direccion,
+    d.codpos AS codpos,
+    l.id AS localidad_id,
+    l.nombre AS nombrelocalidad,
+    pr.id AS provincia_id,
+    pr.nombre AS nombreprovincia,
+    p.id AS pais_id,
+    p.nombre AS nombrepais
+FROM Domicilio d
+INNER JOIN Localidad l ON d.localidad_id = l.id
+INNER JOIN Provincia pr ON l.provincia_id = pr.id
+INNER JOIN Pais p ON pr.pais_id = p.id;
+GO
+
+-- Vista de Domicilio de Persona (Asociación N a N)
+CREATE VIEW [dbo].[vDomicilioPersona] AS
+SELECT
+    dp.id AS domiciliopersonaid,
+    td.id AS tipodomicilio_id,
+    td.nombre AS nombretipodomicilio,
+    p.id AS persona_id,
+    p.nombre AS nombrepersona,
+    p.apellido AS apellidopersona,
+    d.id AS domicilio_id,
+    d.direccion AS direcciondomicilio,
+    l.nombre AS nombrelocalidad
+FROM DomicilioPersona dp
+INNER JOIN TipoDomicilio td ON dp.tipodomicilio_id = td.id
+INNER JOIN Persona p ON dp.persona_id = p.id
+INNER JOIN Domicilio d ON dp.domicilio_id = d.id
+INNER JOIN Localidad l ON d.localidad_id = l.id;
+GO
+
+-- sp de vista compleja
+create procedure S_TipoDocumento
+@id int = null,
+@nombre varchar(128) = null,
+@paisid int = null,
+@nombrepais varchar(128) = null
+as
+Begin
+	select
+		tipodocumentoid,
+		tipodocumento,
+		pais_id,
+		nombrepais
+	from vTipoDocumento td
+	where tipodocumentoid = isnull(@id, tipodocumentoid)
+		and tipodocumento = isnull(@nombre, tipodocumento)
+		and pais_id = isnull(@paisid, pais_id)
+		and nombrepais = isnull(@nombrepais, nombrepais)
+End; 
+
+EXEC S_TipoDocumento @paisid=1
+
+select * from TipoDocumento
+
+-- Buscar País
+CREATE PROCEDURE [dbo].[S_Pais]
+    @paisid int = null,
+    @nombre varchar(128) = null
+AS
+BEGIN
+    SELECT paisid, nombre
+    FROM vPais
+    WHERE paisid = ISNULL(@paisid, paisid)
+      AND nombre = ISNULL(@nombre, nombre);
+END;
+GO
+
+-- Buscar Estado Civil
+CREATE PROCEDURE [dbo].[S_EstadoCivil]
+    @estadocivilid int = null,
+    @estadocivil varchar(128) = null
+AS
+BEGIN
+    SELECT estadocivilid, estadocivil
+    FROM vEstadoCivil
+    WHERE estadocivilid = ISNULL(@estadocivilid, estadocivilid)
+      AND estadocivil = ISNULL(@estadocivil, estadocivil);
+END;
+GO
+
+-- Buscar Género
+CREATE PROCEDURE [dbo].[S_Genero]
+    @generoid int = null,
+    @genero varchar(128) = null
+AS
+BEGIN
+    SELECT generoid, genero
+    FROM vGenero
+    WHERE generoid = ISNULL(@generoid, generoid)
+      AND genero = ISNULL(@genero, genero);
+END;
+GO
+
+-- Buscar Tipo de Contacto
+CREATE PROCEDURE [dbo].[S_TipoContacto]
+    @tipocontactoid int = null,
+    @tipocontacto varchar(128) = null
+AS
+BEGIN
+    SELECT tipocontactoid, tipocontacto
+    FROM vTipoContacto
+    WHERE tipocontactoid = ISNULL(@tipocontactoid, tipocontactoid)
+      AND tipocontacto = ISNULL(@tipocontacto, tipocontacto);
+END;
+GO
+
+-- Buscar Tipo de Domicilio
+CREATE PROCEDURE [dbo].[S_TipoDomicilio]
+    @tipodomicilioid int = null,
+    @tipodomicilio varchar(128) = null
+AS
+BEGIN
+    SELECT tipodomicilioid, tipodomicilio
+    FROM vTipoDomicilio
+    WHERE tipodomicilioid = ISNULL(@tipodomicilioid, tipodomicilioid)
+      AND tipodomicilio = ISNULL(@tipodomicilio, tipodomicilio);
+END;
+GO
+
+-- Buscar Provincia
+CREATE PROCEDURE [dbo].[S_Provincia]
+    @provinciaid int = null,
+    @provincia varchar(128) = null,
+    @pais_id int = null,
+    @nombrepais varchar(128) = null
+AS
+BEGIN
+    SELECT provinciaid, provincia, pais_id, nombrepais
+    FROM vProvincia
+    WHERE provinciaid = ISNULL(@provinciaid, provinciaid)
+      AND provincia = ISNULL(@provincia, provincia)
+      AND pais_id = ISNULL(@pais_id, pais_id)
+      AND nombrepais = ISNULL(@nombrepais, nombrepais);
+END;
+GO
+
+-- Buscar Localidad
+CREATE PROCEDURE [dbo].[S_Localidad]
+    @localidadid int = null,
+    @localidad varchar(128) = null,
+    @provincia_id int = null,
+    @nombreprovincia varchar(128) = null,
+    @pais_id int = null,
+    @nombrepais varchar(128) = null
+AS
+BEGIN
+    SELECT localidadid, localidad, provincia_id, nombreprovincia, pais_id, nombrepais
+    FROM vLocalidad
+    WHERE localidadid = ISNULL(@localidadid, localidadid)
+      AND localidad = ISNULL(@localidad, localidad)
+      AND provincia_id = ISNULL(@provincia_id, provincia_id)
+      AND nombreprovincia = ISNULL(@nombreprovincia, nombreprovincia)
+      AND pais_id = ISNULL(@pais_id, pais_id)
+      AND nombrepais = ISNULL(@nombrepais, nombrepais);
+END;
+GO
+
+-- Buscar Persona
+CREATE PROCEDURE [dbo].[S_Persona]
+    @personaid int = null,
+    @nombre varchar(128) = null,
+    @apellido varchar(128) = null,
+    @documento varchar(64) = null,
+    @fnacto date = null,
+    @tipodocumento_id int = null,
+    @nombretipodocumento varchar(128) = null,
+    @genero_id int = null,
+    @nombregenero varchar(128) = null,
+    @estadocivil_id int = null,
+    @nombreestadocivil varchar(128) = null
+AS
+BEGIN
+    SELECT 
+        personaid, nombre, apellido, documento, fnacto, 
+        tipodocumento_id, nombretipodocumento, 
+        genero_id, nombregenero, 
+        estadocivil_id, nombreestadocivil
+    FROM vPersona
+    WHERE personaid = ISNULL(@personaid, personaid)
+      AND nombre = ISNULL(@nombre, nombre)
+      AND apellido = ISNULL(@apellido, apellido)
+      AND documento = ISNULL(@documento, documento)
+      AND fnacto = ISNULL(@fnacto, fnacto)
+      AND tipodocumento_id = ISNULL(@tipodocumento_id, tipodocumento_id)
+      AND nombretipodocumento = ISNULL(@nombretipodocumento, nombretipodocumento)
+      AND genero_id = ISNULL(@genero_id, genero_id)
+      AND nombregenero = ISNULL(@nombregenero, nombregenero)
+      AND estadocivil_id = ISNULL(@estadocivil_id, estadocivil_id)
+      AND nombreestadocivil = ISNULL(@nombreestadocivil, nombreestadocivil);
+END;
+GO
+
+-- Buscar Contacto
+CREATE PROCEDURE [dbo].[S_Contacto]
+    @contactoid int = null,
+    @contacto varchar(256) = null,
+    @tipocontacto_id int = null,
+    @nombretipocontacto varchar(128) = null,
+    @persona_id int = null,
+    @nombrepersona varchar(128) = null,
+    @apellidopersona varchar(128) = null
+AS
+BEGIN
+    SELECT 
+        contactoid, contacto, 
+        tipocontacto_id, nombretipocontacto, 
+        persona_id, nombrepersona, apellidopersona
+    FROM vContacto
+    WHERE contactoid = ISNULL(@contactoid, contactoid)
+      AND contacto = ISNULL(@contacto, contacto)
+      AND tipocontacto_id = ISNULL(@tipocontacto_id, tipocontacto_id)
+      AND nombretipocontacto = ISNULL(@nombretipocontacto, nombretipocontacto)
+      AND persona_id = ISNULL(@persona_id, persona_id)
+      AND nombrepersona = ISNULL(@nombrepersona, nombrepersona)
+      AND apellidopersona = ISNULL(@apellidopersona, apellidopersona);
+END;
+GO
+
+-- Buscar Domicilio
+CREATE PROCEDURE [dbo].[S_Domicilio]
+    @domicilioid int = null,
+    @direccion varchar(256) = null,
+    @codpos varchar(16) = null,
+    @localidad_id int = null,
+    @nombrelocalidad varchar(128) = null,
+    @provincia_id int = null,
+    @nombreprovincia varchar(128) = null,
+    @pais_id int = null,
+    @nombrepais varchar(128) = null
+AS
+BEGIN
+    SELECT 
+        domicilioid, direccion, codpos, 
+        localidad_id, nombrelocalidad, 
+        provincia_id, nombreprovincia, 
+        pais_id, nombrepais
+    FROM vDomicilio
+    WHERE domicilioid = ISNULL(@domicilioid, domicilioid)
+      AND direccion = ISNULL(@direccion, direccion)
+      AND codpos = ISNULL(@codpos, codpos)
+      AND localidad_id = ISNULL(@localidad_id, localidad_id)
+      AND nombrelocalidad = ISNULL(@nombrelocalidad, nombrelocalidad)
+      AND provincia_id = ISNULL(@provincia_id, provincia_id)
+      AND nombreprovincia = ISNULL(@nombreprovincia, nombreprovincia)
+      AND pais_id = ISNULL(@pais_id, pais_id)
+      AND nombrepais = ISNULL(@nombrepais, nombrepais);
+END;
+GO
+
+-- Buscar DomicilioPersona
+CREATE PROCEDURE [dbo].[S_DomicilioPersona]
+    @domiciliopersonaid int = null,
+    @tipodomicilio_id int = null,
+    @nombretipodomicilio varchar(128) = null,
+    @persona_id int = null,
+    @nombrepersona varchar(128) = null,
+    @apellidopersona varchar(128) = null,
+    @domicilio_id int = null,
+    @direcciondomicilio varchar(256) = null,
+    @nombrelocalidad varchar(128) = null
+AS
+BEGIN
+    SELECT 
+        domiciliopersonaid, 
+        tipodomicilio_id, nombretipodomicilio, 
+        persona_id, nombrepersona, apellidopersona, 
+        domicilio_id, direcciondomicilio, nombrelocalidad
+    FROM vDomicilioPersona
+    WHERE domiciliopersonaid = ISNULL(@domiciliopersonaid, domiciliopersonaid)
+      AND tipodomicilio_id = ISNULL(@tipodomicilio_id, tipodomicilio_id)
+      AND nombretipodomicilio = ISNULL(@nombretipodomicilio, nombretipodomicilio)
+      AND persona_id = ISNULL(@persona_id, persona_id)
+      AND nombrepersona = ISNULL(@nombrepersona, nombrepersona)
+      AND apellidopersona = ISNULL(@apellidopersona, apellidopersona)
+      AND domicilio_id = ISNULL(@domicilio_id, domicilio_id)
+      AND direcciondomicilio = ISNULL(@direcciondomicilio, direcciondomicilio)
+      AND nombrelocalidad = ISNULL(@nombrelocalidad, nombrelocalidad);
+END;
+GO
