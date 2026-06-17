@@ -220,17 +220,36 @@ EXEC S_TipoDocumento @paisid=1
 select * from TipoDocumento
 
 -- Buscar País
-CREATE PROCEDURE [dbo].[S_Pais]
-    @paisid int = null,
-    @nombre varchar(128) = null
-AS
-BEGIN
-    SELECT paisid, nombre
-    FROM vPais
-    WHERE paisid = ISNULL(@paisid, paisid)
-      AND nombre = ISNULL(@nombre, nombre);
+create procedure S_PAIS
+@id int = null,
+@nombre varchar(128) = null
+As
+Begin
+ 	select id, nombre
+ 	from Pais 
+ 	where id = isnull(@id, id)
+ 	  and nombre = isnull(@nombre, nombre)
+	order by nombre;
 END;
-GO
+
+-- Buscar Provincia
+create procedure S_Provincia
+@id int = null,
+@nombre varchar(128) = null,
+@paisid int = null,
+@nombrepais varchar(128) = null
+As
+Begin
+ 	select pr.id, pr.nombre, pa.id as paisid, pa.nombre as nombrepais
+ 	from Provincia pr
+    inner join Pais pa
+       on pr.pais_id = pa.id
+ 	where pr.id = isnull(@id, pr.id)
+ 	  and pr.nombre = isnull(@nombre, pr.nombre)
+      and pa.id = isnull(@paisid, pa.id)
+      and pa.nombre = isnull(@nombrepais, pa.nombre)
+	order by pa.nombre, pr.nombre;
+END;
 
 -- Buscar Estado Civil
 CREATE PROCEDURE [dbo].[S_EstadoCivil]
@@ -281,23 +300,6 @@ BEGIN
     FROM vTipoDomicilio
     WHERE tipodomicilioid = ISNULL(@tipodomicilioid, tipodomicilioid)
       AND tipodomicilio = ISNULL(@tipodomicilio, tipodomicilio);
-END;
-GO
-
--- Buscar Provincia
-CREATE PROCEDURE [dbo].[S_Provincia]
-    @provinciaid int = null,
-    @provincia varchar(128) = null,
-    @pais_id int = null,
-    @nombrepais varchar(128) = null
-AS
-BEGIN
-    SELECT provinciaid, provincia, pais_id, nombrepais
-    FROM vProvincia
-    WHERE provinciaid = ISNULL(@provinciaid, provinciaid)
-      AND provincia = ISNULL(@provincia, provincia)
-      AND pais_id = ISNULL(@pais_id, pais_id)
-      AND nombrepais = ISNULL(@nombrepais, nombrepais);
 END;
 GO
 
@@ -444,3 +446,11 @@ BEGIN
       AND nombrelocalidad = ISNULL(@nombrelocalidad, nombrelocalidad);
 END;
 GO
+
+SELECT * FROM Pais
+
+DELETE FROM Pais
+
+DELETE FROM dbo.TipoDocumento WHERE pais_id = 1;
+
+SELECT * FROM Provincia

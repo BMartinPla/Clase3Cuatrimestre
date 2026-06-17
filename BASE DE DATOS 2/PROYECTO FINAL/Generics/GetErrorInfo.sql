@@ -1,11 +1,20 @@
 CREATE PROCEDURE GetErrorInfo 
 AS  
 BEGIN
-SELECT  
-    ERROR_NUMBER() AS ErrorNumber  
-    ,ERROR_SEVERITY() AS ErrorSeverity  
-    ,ERROR_STATE() AS ErrorState  
-    ,ERROR_PROCEDURE() AS ErrorProcedure  
-    ,ERROR_LINE() AS ErrorLine  
-    ,ERROR_MESSAGE() AS ErrorMessage;  
+    DECLARE @ErrorMessage NVARCHAR(4000),
+        @ErrorProcedure NVARCHAR(4000),
+        @ErrorNumber INT,
+        @ErrorSeverity INT,
+        @ErrorLine INT,
+        @ErrorState INT;
+    DECLARE @OutMessage NVARCHAR(4000);
+    SELECT  
+        @ErrorNumber = ERROR_NUMBER(),
+        @ErrorSeverity = ERROR_SEVERITY(),
+        @ErrorState = ERROR_STATE(),
+        @ErrorProcedure = ERROR_PROCEDURE(),
+        @ErrorLine = ERROR_LINE(),
+        @ErrorMessage = ERROR_MESSAGE();
+    SET @OutMessage = CONCAT('Error in', @ErrorProcedure, ', Line', @ErrorLine, ': ', @ErrorMessage);
+    RAISERROR (@OutMessage, @ErrorSeverity, @ErrorState);
 END;
