@@ -1,0 +1,725 @@
+-- ======================================================================
+-- 1. PREPARACIÓN Y CREACIÓN DE LA BASE DE DATOS
+-- ======================================================================
+USE [master];
+GO
+
+IF EXISTS (SELECT name FROM sys.databases WHERE name = N'Generics')
+BEGIN
+    ALTER DATABASE [Generics] SET SINGLE_USER WITH ROLLBACK IMMEDIATE;
+    DROP DATABASE [Generics];
+END
+GO
+
+CREATE DATABASE [Generics];
+GO
+
+USE [Generics];
+GO
+
+-- ======================================================================
+-- 2. CREACIÓN DE TABLAS
+-- ======================================================================
+CREATE TABLE Pais (
+    id INTEGER primary key identity(1,1),
+    nombre varchar(128) not null unique);
+
+CREATE TABLE Genero (
+    id INTEGER primary key identity(1,1),
+    nombre varchar(128) not null unique);
+
+CREATE TABLE EstadoCivil (
+    id INTEGER primary key identity(1,1),
+    nombre varchar(128) not null unique);
+
+CREATE TABLE TipoDomicilio (
+    id INTEGER primary key identity(1,1),
+    nombre varchar(128) not null unique);
+
+CREATE TABLE TipoContacto (
+    id INTEGER primary key identity(1,1),
+    nombre varchar(128) not null unique);
+
+CREATE TABLE TipoDocumento (
+    id INTEGER primary key identity(1,1),
+    pais_id INTEGER not null,
+    nombre varchar(128) not null unique,
+    constraint fk_tdoc_pais foreign key (pais_id) references Pais(id));
+
+CREATE TABLE Provincia (
+    id INTEGER primary key identity(1,1),
+    pais_id INTEGER not null,
+    nombre varchar(128) not null,
+    constraint fk_pcia_pais foreign key (pais_id) references Pais(id),
+    constraint unq_provincia unique(pais_id, nombre));
+
+CREATE TABLE Localidad (
+    id INTEGER primary key identity(1,1),
+    provincia_id INTEGER not null,
+    nombre varchar(128) not null unique,
+    constraint fk_loc_pcia foreign key (provincia_id) references Provincia(id),
+    constraint unq_localidad unique(provincia_id, nombre));
+
+CREATE TABLE Domicilio (
+    id INTEGER primary key identity(1,1),
+    localidad_id INTEGER not null,
+    direccion varchar(256) not null,
+    codpos varchar(16),
+    constraint fk_dom_loc foreign key (localidad_id) references Localidad(id));
+
+CREATE TABLE Persona (
+    id INTEGER primary key identity(1,1),
+    apellido varchar(128) not null,
+    nombre varchar(128) not null,
+    tipodocumento_id INTEGER not null,
+    documento varchar(64) not null,
+    genero_id INTEGER not null,
+    estadocivil_id INTEGER not null,
+    fnacto date not null,
+    constraint fk_per_tdoc foreign key (tipodocumento_id) references TipoDocumento(id),
+    constraint fk_per_gen foreign key (genero_id) references Genero(id),
+    constraint fk_per_eciv foreign key (estadocivil_id) references EstadoCivil(id),
+    constraint unq_persona unique(tipodocumento_id, documento));
+
+CREATE TABLE Contacto (
+    id INTEGER primary key identity(1,1),
+    tipocontacto_id INTEGER not null,
+    persona_id INTEGER not null,
+    contacto varchar(256) not null,
+    constraint fk_cont_tipo foreign key (tipocontacto_id) references TipoContacto(id),
+    constraint fk_cont_pers foreign key (persona_id) references Persona(id));
+
+CREATE TABLE DomicilioPersona (
+    id INTEGER primary key identity(1,1),
+    tipodomicilio_id INTEGER not null,
+    domicilio_id INTEGER not null,
+    persona_id INTEGER not null,
+    constraint fk_domper_tipo foreign key (tipodomicilio_id) references TipoDomicilio(id),
+    constraint fk_domper_dom foreign key (domicilio_id) references Domicilio(id),
+    constraint fk_domper_per foreign key (persona_id) references Persona(id));
+GO
+
+-- ======================================================================
+-- 3. CREACIÓN DE VISTAS
+-- ======================================================================
+CREATE VIEW vPais AS
+SELECT id AS paisid, nombre FROM Pais;
+GO
+
+CREATE VIEW [dbo].[vEstadoCivil] AS
+SELECT id AS estadocivilid, nombre AS estadocivil FROM EstadoCivil;
+GO
+
+CREATE VIEW [dbo].[vGenero] AS
+SELECT id AS generoid, nombre AS genero FROM Genero;
+GO
+
+CREATE VIEW [dbo].[vTipoContacto] AS
+SELECT id AS tipocontactoid, nombre AS tipocontacto FROM TipoContacto;
+GO
+
+CREATE VIEW [dbo].[vTipoDomicilio] AS
+SELECT id AS tipodomicilioid, nombre AS tipodomicilio FROM TipoDomicilio;
+GO
+
+CREATE VIEW vTipoDocumento AS
+SELECT td.id AS tipodocumentoid, td.nombre AS tipodocumento, p.id AS pais_id, p.nombre AS nombrepais
+FROM TipoDocumento td
+INNER JOIN Pais p ON td.pais_id = p.id;
+GO
+
+CREATE VIEW [dbo].[vProvincia] AS
+SELECT pr.id AS provinciaid, pr.nombre AS provincia, p.id AS pais_id, p.nombre AS nombrepais
+FROM Provincia pr
+INNER JOIN Pais p ON pr.pais_id = p.id;
+GO
+
+CREATE VIEW [dbo].[vLocalidad] AS
+SELECT l.id AS localidadid, l.nombre AS localidad, pr.id AS provincia_id, pr.nombre AS nombreprovincia, p.id AS pais_id, p.nombre AS nombrepais
+FROM Localidad l
+INNER JOIN Provincia pr ON l.provincia_id = pr.id
+INNER JOIN Pais p ON pr.pais_id = p.id;
+GO
+
+CREATE VIEW [dbo].[vPersona] AS
+SELECT p.id AS personaid, p.nombre AS nombre, p.apellido AS apellido, p.documento AS documento, p.fnacto AS fnacto,
+    td.id AS tipodocumento_id, td.nombre AS nombretipodocumento, g.id AS genero_id, g.nombre AS nombregenero, ec.id AS estadocivil_id, ec.nombre AS nombreestadocivil
+FROM Persona p
+INNER JOIN TipoDocumento td ON p.tipodocumento_id = td.id
+INNER JOIN Genero g ON p.genero_id = g.id
+INNER JOIN EstadoCivil ec ON p.estadocivil_id = ec.id;
+GO
+
+CREATE VIEW [dbo].[vContacto] AS
+SELECT c.id AS contactoid, c.contacto AS contacto, tc.id AS tipocontacto_id, tc.nombre AS nombretipocontacto, p.id AS persona_id, p.nombre AS nombrepersona, p.apellido AS apellidopersona
+FROM Contacto c
+INNER JOIN TipoContacto tc ON c.tipocontacto_id = tc.id
+INNER JOIN Persona p ON c.persona_id = p.id;
+GO
+
+CREATE VIEW [dbo].[vDomicilio] AS
+SELECT d.id AS domicilioid, d.direccion AS direccion, d.codpos AS codpos, l.id AS localidad_id, l.nombre AS nombrelocalidad, pr.id AS provincia_id, pr.nombre AS nombreprovincia, p.id AS pais_id, p.nombre AS nombrepais
+FROM Domicilio d
+INNER JOIN Localidad l ON d.localidad_id = l.id
+INNER JOIN Provincia pr ON l.provincia_id = pr.id
+INNER JOIN Pais p ON pr.pais_id = p.id;
+GO
+
+CREATE VIEW [dbo].[vDomicilioPersona] AS
+SELECT dp.id AS domiciliopersonaid, td.id AS tipodomicilio_id, td.nombre AS nombretipodomicilio, p.id AS persona_id, p.nombre AS nombrepersona, p.apellido AS apellidopersona, d.id AS domicilio_id, d.direccion AS direcciondomicilio, l.nombre AS nombrelocalidad
+FROM DomicilioPersona dp
+INNER JOIN TipoDomicilio td ON dp.tipodomicilio_id = td.id
+INNER JOIN Persona p ON dp.persona_id = p.id
+INNER JOIN Domicilio d ON dp.domicilio_id = d.id
+INNER JOIN Localidad l ON d.localidad_id = l.id;
+GO
+
+-- ======================================================================
+-- 4. PROCEDIMIENTOS ALMACENADOS BASE (Manejo de Errores y Generadores)
+-- ======================================================================
+CREATE PROCEDURE GetErrorInfo 
+AS  
+BEGIN
+    DECLARE @ErrorMessage NVARCHAR(4000), @ErrorProcedure NVARCHAR(4000), @ErrorNumber INT, @ErrorSeverity INT, @ErrorLine INT, @ErrorState INT;
+    DECLARE @OutMessage NVARCHAR(4000);
+    SELECT @ErrorNumber = ERROR_NUMBER(), @ErrorSeverity = ERROR_SEVERITY(), @ErrorState = ERROR_STATE(), @ErrorProcedure = ERROR_PROCEDURE(), @ErrorLine = ERROR_LINE(), @ErrorMessage = ERROR_MESSAGE();
+    SET @OutMessage = CONCAT('Error in ', ISNULL(@ErrorProcedure, 'N/A'), ', Line ', @ErrorLine, ': ', @ErrorMessage);
+    RAISERROR (@OutMessage, @ErrorSeverity, @ErrorState);
+END;
+GO
+
+CREATE PROCEDURE gencreatedelete
+@tab varchar(128)
+AS
+BEGIN
+    DECLARE @SQLCMD NVARCHAR(4000), @DROPCMD NVARCHAR(4000);
+	SET @DROPCMD = CONCAT('IF OBJECT_ID(', CHAR(39), 'D_', @tab, CHAR(39), ',', CHAR(39), 'P', CHAR(39) , ') IS NOT NULL BEGIN DROP PROCEDURE D_', @tab, '; END');
+	EXEC(@DROPCMD);
+    SET @SQLCMD = CONCAT('CREATE PROCEDURE D_', @tab, CHAR(13), CHAR(9), '@ID INTEGER', CHAR(13), 'AS', CHAR(13), 'BEGIN', CHAR(13));
+    SET @SQLCMD = CONCAT(@SQLCMD, CHAR(9),'BEGIN TRY', CHAR(13), CHAR(9),CHAR(9),'DELETE FROM ',@tab, ' WHERE ID = @ID', CHAR(13), CHAR(9),'END TRY', CHAR(13));
+    SET @SQLCMD = CONCAT(@SQLCMD, CHAR(9),'BEGIN CATCH', CHAR(13), CHAR(9),CHAR(9),'EXECUTE GetErrorInfo', CHAR(13), CHAR(9),'END CATCH', CHAR(13), 'END;');
+	EXEC(@SQLCMD);
+END;
+GO
+
+CREATE PROCEDURE gencreateinsert
+@tab varchar(128)
+AS
+BEGIN
+    DECLARE @SQLTEXT NVARCHAR(1024), @VALUES NVARCHAR(1024), @SQLCMD NVARCHAR(4000), @DROPCMD NVARCHAR(4000);
+    -- Cursor LOCAL y con GROUP BY para evitar duplicidad de columnas por múltiples índices
+    DECLARE C_COL CURSOR LOCAL FOR
+    SELECT UPPER(c.name), 
+        CASE y.name
+            WHEN 'varchar' THEN 'VARCHAR(' + LTRIM(RTRIM(STR(c.max_length))) + ')'
+            WHEN 'char' THEN 'CHAR(' + LTRIM(RTRIM(STR(c.max_length))) + ')'
+            ELSE UPPER(y.name)
+        END,
+        MAX(ISNULL(CAST(i.is_primary_key AS INT), 0))
+    FROM sys.tables t
+        INNER JOIN sys.columns c ON c.object_id = t.object_id
+        INNER JOIN sys.types y ON y.system_type_id = c.system_type_id AND y.user_type_id = c.user_type_id
+        LEFT JOIN sys.index_columns ic ON ic.object_id = t.object_id AND ic.column_id = c.column_id
+        LEFT JOIN sys.indexes i ON i.object_id = t.object_id AND i.index_id = ic.index_id
+    WHERE t.name = @tab
+    GROUP BY c.name, y.name, c.max_length
+    ORDER BY UPPER(c.name);
+
+    DECLARE @COLNAME VARCHAR(128), @COLTYPE VARCHAR(128), @ISPK INT, @CNT INTEGER;
+
+	SET @DROPCMD = CONCAT('IF OBJECT_ID(' , CHAR(39) ,'I_', @tab,CHAR(39), ',' ,CHAR(39) ,'P',CHAR(39) ,') IS NOT NULL BEGIN DROP PROCEDURE I_', @tab, '; END');
+	EXEC(@DROPCMD);
+
+    SET @SQLCMD = CONCAT('CREATE PROCEDURE I_', @tab, CHAR(13));
+    OPEN C_COL; FETCH NEXT FROM C_COL INTO @COLNAME, @COLTYPE, @ISPK; SET @CNT = 0;
+    WHILE @@FETCH_STATUS = 0
+    BEGIN
+        IF @ISPK = 1
+        BEGIN
+            IF @CNT = 0 BEGIN SET @SQLCMD = CONCAT(@SQLCMD, CHAR(9), ' @', @COLNAME ,' ', @COLTYPE ,' OUTPUT', CHAR(13)); SET @CNT = 1; END
+            ELSE SET @SQLCMD = CONCAT(@SQLCMD, CHAR(9), ',@', @COLNAME ,' ', @COLTYPE ,' OUTPUT', CHAR(13));
+        END
+        ELSE
+        BEGIN
+            IF @CNT = 0 BEGIN SET @SQLCMD = CONCAT(@SQLCMD, CHAR(9),' @',@COLNAME,' ', @COLTYPE , CHAR(13)); SET @CNT = 1; END
+            ELSE SET @SQLCMD = CONCAT(@SQLCMD, CHAR(9),',@',@COLNAME,' ', @COLTYPE , CHAR(13));
+        END            
+        FETCH NEXT FROM C_COL INTO @COLNAME, @COLTYPE, @ISPK;
+    END
+    CLOSE C_COL;
+
+    SET @SQLCMD = CONCAT(@SQLCMD,CHAR(13),'AS',CHAR(13),'BEGIN',CHAR(13),CHAR(9),'BEGIN TRY',CHAR(13),CHAR(9),CHAR(9),'INSERT INTO ',@tab);
+    SET @CNT = 0; OPEN C_COL; FETCH NEXT FROM C_COL INTO @COLNAME, @COLTYPE, @ISPK;
+    WHILE @@FETCH_STATUS = 0
+    BEGIN
+        IF @ISPK = 0
+        BEGIN
+            IF @CNT = 0 BEGIN SET @SQLTEXT = CONCAT('(',UPPER(@COLNAME)); SET @VALUES = CONCAT('(@', UPPER(@COLNAME)); SET @CNT = 1; END
+            ELSE BEGIN SET @SQLTEXT = CONCAT(@SQLTEXT, ', ',UPPER(@COLNAME)); SET @VALUES = CONCAT(@VALUES, ', @', UPPER(@COLNAME)); END
+        END
+        FETCH NEXT FROM C_COL INTO @COLNAME, @COLTYPE, @ISPK;
+    END
+    SET @SQLTEXT = CONCAT(@SQLTEXT, ')', CHAR(13)); SET @VALUES = CONCAT(@VALUES, ')', CHAR(13));
+	SET @SQLCMD = CONCAT(@SQLCMD, CHAR(13), CHAR(9), CHAR(9), @SQLTEXT, CHAR(9), CHAR(9), 'VALUES', CHAR(13), CHAR(9), CHAR(9), @VALUES);
+	CLOSE C_COL; DEALLOCATE C_COL;
+
+    SET @SQLCMD = CONCAT(@SQLCMD,CHAR(9),CHAR(9),'SET @ID = @@IDENTITY',CHAR(13),CHAR(9),'END TRY',CHAR(13),CHAR(9),'BEGIN CATCH',CHAR(13),CHAR(9),CHAR(9),'EXECUTE GetErrorInfo',CHAR(13),CHAR(9),'END CATCH',CHAR(13),'END;');
+	EXEC(@SQLCMD);
+END;
+GO
+
+CREATE PROCEDURE gencreateupdate
+@tab varchar(128)
+AS
+BEGIN
+    DECLARE @SQLCMD NVARCHAR(MAX), @DROPCMD NVARCHAR(4000), @WHERE VARCHAR(1024);
+    -- Cursor LOCAL y agrupado
+    DECLARE C_COL CURSOR LOCAL FOR
+    SELECT UPPER(c.name), 
+        CASE y.name
+            WHEN 'varchar' THEN 'VARCHAR(' + LTRIM(RTRIM(STR(c.max_length))) + ')'
+            WHEN 'char' THEN 'CHAR(' + LTRIM(RTRIM(STR(c.max_length))) + ')'
+            ELSE UPPER(y.name)
+        END,
+        MAX(ISNULL(CAST(i.is_primary_key AS INT), 0))
+    FROM sys.tables t
+        INNER JOIN sys.columns c ON c.object_id = t.object_id
+        INNER JOIN sys.types y ON y.system_type_id = c.system_type_id AND y.user_type_id = c.user_type_id
+        LEFT JOIN sys.index_columns ic ON ic.object_id = t.object_id AND ic.column_id = c.column_id
+        LEFT JOIN sys.indexes i ON i.object_id = t.object_id AND i.index_id = ic.index_id
+    WHERE t.name = @tab
+    GROUP BY c.name, y.name, c.max_length
+    ORDER BY UPPER(c.name);
+
+    DECLARE @COLNAME VARCHAR(128), @COLTYPE VARCHAR(128), @ISPK INT, @CNT INTEGER;
+
+	SET @DROPCMD = CONCAT('IF OBJECT_ID(',CHAR(39),'U_',@tab, CHAR(39), ',', CHAR(39), 'P', CHAR(39) , ') IS NOT NULL BEGIN DROP PROCEDURE U_', @tab, '; END');
+	EXEC(@DROPCMD);
+
+    SET @SQLCMD = CONCAT('CREATE PROCEDURE U_',@tab, CHAR(13));
+    OPEN C_COL; FETCH NEXT FROM C_COL INTO @COLNAME, @COLTYPE, @ISPK; SET @CNT = 0;
+    WHILE @@FETCH_STATUS = 0
+    BEGIN
+        IF @CNT = 0 BEGIN SET @SQLCMD = CONCAT(@SQLCMD, CHAR(9), ' @', @COLNAME, ' ', @COLTYPE, ' = NULL', CHAR(13)); SET @CNT = 1; END
+        ELSE SET @SQLCMD = CONCAT(@SQLCMD, CHAR(9), ',@', @COLNAME, ' ', @COLTYPE, ' = NULL', CHAR(13));
+        FETCH NEXT FROM C_COL INTO @COLNAME, @COLTYPE, @ISPK;
+    END
+    CLOSE C_COL;
+
+    SET @SQLCMD = CONCAT(@SQLCMD,'AS',CHAR(13),'BEGIN',CHAR(13),CHAR(9),'BEGIN TRY',CHAR(13),CHAR(9),CHAR(9),'UPDATE ', @tab ,' SET ', CHAR(13));
+    SET @CNT = 0; OPEN C_COL; FETCH NEXT FROM C_COL INTO @COLNAME, @COLTYPE, @ISPK;
+    WHILE @@FETCH_STATUS = 0
+    BEGIN
+        IF @ISPK = 1 BEGIN SET @WHERE = CONCAT('WHERE ' + UPPER(@COLNAME) + ' = @' + @COLNAME, CHAR(13)); END
+        ELSE
+        BEGIN
+            IF @CNT = 0 BEGIN SET @SQLCMD = CONCAT(@SQLCMD,CHAR(9),CHAR(9),@COLNAME, ' = ISNULL(@', @COLNAME, ', ', @COLNAME ,')',CHAR(13)); SET @CNT = 1; END
+            ELSE SET @SQLCMD = CONCAT(@SQLCMD,CHAR(9),CHAR(9),',', @COLNAME, ' = ISNULL(@', @COLNAME, ', ', @COLNAME ,')',CHAR(13));
+        END
+        FETCH NEXT FROM C_COL INTO @COLNAME, @COLTYPE, @ISPK;
+    END
+	SET @SQLCMD = CONCAT(@SQLCMD,CHAR(9),CHAR(9),@WHERE,CHAR(13));
+    CLOSE C_COL; DEALLOCATE C_COL;
+
+    SET @SQLCMD = CONCAT(@SQLCMD, CHAR(9),'END TRY', CHAR(13),CHAR(9),'BEGIN CATCH',CHAR(13),CHAR(9), CHAR(9),'EXECUTE GetErrorInfo',CHAR(13),CHAR(9),'END CATCH',CHAR(13),'END;');
+	EXEC(@SQLCMD);
+END;
+GO
+
+-- ======================================================================
+-- 5. EJECUCIÓN DINÁMICA (CREAR LOS I_, U_, D_ PARA TODAS LAS TABLAS)
+-- ======================================================================
+BEGIN
+	-- Usamos un cursor LOCAL para que no colisione con nada
+	DECLARE ctab CURSOR LOCAL FOR SELECT name FROM sys.tables
+	DECLARE @t VARCHAR(64)
+	OPEN ctab
+	FETCH NEXT FROM ctab INTO @t
+	WHILE @@FETCH_STATUS = 0
+	BEGIN
+		BEGIN TRY 
+			EXEC gencreateinsert @t;
+			EXEC gencreateupdate @t;
+			EXEC gencreatedelete @t;
+            PRINT '✅ SPs generados exitosamente para tabla: ' + @t;
+		END TRY
+		BEGIN CATCH
+            PRINT '❌ ERROR al generar SPs para la tabla: ' + @t;
+            PRINT ERROR_MESSAGE();
+		END CATCH
+		FETCH NEXT FROM ctab INTO @t
+	END
+	CLOSE ctab
+	DEALLOCATE ctab
+END
+GO
+
+-- ======================================================================
+-- 6. CREACIÓN DE PROCEDIMIENTOS DE BÚSQUEDA (S_)
+-- ======================================================================
+CREATE PROCEDURE S_TipoDocumento
+    @id int = null, @nombre varchar(128) = null, @paisid int = null, @nombrepais varchar(128) = null
+AS BEGIN
+	SELECT tipodocumentoid, tipodocumento, pais_id, nombrepais
+	FROM vTipoDocumento td
+	WHERE tipodocumentoid = ISNULL(@id, tipodocumentoid)
+		AND tipodocumento = ISNULL(@nombre, tipodocumento)
+		AND pais_id = ISNULL(@paisid, pais_id)
+		AND nombrepais = ISNULL(@nombrepais, nombrepais)
+END;
+GO
+
+CREATE PROCEDURE S_PAIS
+    @id int = null, @nombre varchar(128) = null
+AS BEGIN
+ 	SELECT id, nombre FROM Pais 
+ 	WHERE id = ISNULL(@id, id) AND nombre = ISNULL(@nombre, nombre)
+	ORDER BY nombre;
+END;
+GO
+
+CREATE PROCEDURE S_Provincia
+    @id int = null, @nombre varchar(128) = null, @paisid int = null, @nombrepais varchar(128) = null
+AS BEGIN
+ 	SELECT pr.id, pr.nombre, pa.id AS paisid, pa.nombre AS nombrepais
+ 	FROM Provincia pr INNER JOIN Pais pa ON pr.pais_id = pa.id
+ 	WHERE pr.id = ISNULL(@id, pr.id) AND pr.nombre = ISNULL(@nombre, pr.nombre)
+      AND pa.id = ISNULL(@paisid, pa.id) AND pa.nombre = ISNULL(@nombrepais, pa.nombre)
+	ORDER BY pa.nombre, pr.nombre;
+END;
+GO
+
+CREATE PROCEDURE S_EstadoCivil
+    @estadocivilid int = null, @estadocivil varchar(128) = null
+AS BEGIN
+    SELECT estadocivilid, estadocivil FROM vEstadoCivil
+    WHERE estadocivilid = ISNULL(@estadocivilid, estadocivilid) AND estadocivil = ISNULL(@estadocivil, estadocivil);
+END;
+GO
+
+CREATE PROCEDURE S_Genero
+    @generoid int = null, @genero varchar(128) = null
+AS BEGIN
+    SELECT generoid, genero FROM vGenero
+    WHERE generoid = ISNULL(@generoid, generoid) AND genero = ISNULL(@genero, genero);
+END;
+GO
+
+CREATE PROCEDURE S_TipoContacto
+    @tipocontactoid int = null, @tipocontacto varchar(128) = null
+AS BEGIN
+    SELECT tipocontactoid, tipocontacto FROM vTipoContacto
+    WHERE tipocontactoid = ISNULL(@tipocontactoid, tipocontactoid) AND tipocontacto = ISNULL(@tipocontacto, tipocontacto);
+END;
+GO
+
+CREATE PROCEDURE S_TipoDomicilio
+    @tipodomicilioid int = null, @tipodomicilio varchar(128) = null
+AS BEGIN
+    SELECT tipodomicilioid, tipodomicilio FROM vTipoDomicilio
+    WHERE tipodomicilioid = ISNULL(@tipodomicilioid, tipodomicilioid) AND tipodomicilio = ISNULL(@tipodomicilio, tipodomicilio);
+END;
+GO
+
+CREATE PROCEDURE S_Localidad
+    @localidadid int = null, @localidad varchar(128) = null, @provincia_id int = null, @nombreprovincia varchar(128) = null, @pais_id int = null, @nombrepais varchar(128) = null
+AS BEGIN
+    SELECT localidadid, localidad, provincia_id, nombreprovincia, pais_id, nombrepais FROM vLocalidad
+    WHERE localidadid = ISNULL(@localidadid, localidadid) AND localidad = ISNULL(@localidad, localidad)
+      AND provincia_id = ISNULL(@provincia_id, provincia_id) AND nombreprovincia = ISNULL(@nombreprovincia, nombreprovincia)
+      AND pais_id = ISNULL(@pais_id, pais_id) AND nombrepais = ISNULL(@nombrepais, nombrepais);
+END;
+GO
+
+CREATE PROCEDURE S_Persona
+    @personaid int = null, @nombre varchar(128) = null, @apellido varchar(128) = null, @documento varchar(64) = null, @fnacto date = null, @tipodocumento_id int = null, @nombretipodocumento varchar(128) = null, @genero_id int = null, @nombregenero varchar(128) = null, @estadocivil_id int = null, @nombreestadocivil varchar(128) = null
+AS BEGIN
+    SELECT personaid, nombre, apellido, documento, fnacto, tipodocumento_id, nombretipodocumento, genero_id, nombregenero, estadocivil_id, nombreestadocivil FROM vPersona
+    WHERE personaid = ISNULL(@personaid, personaid) AND nombre = ISNULL(@nombre, nombre) AND apellido = ISNULL(@apellido, apellido)
+      AND documento = ISNULL(@documento, documento) AND fnacto = ISNULL(@fnacto, fnacto) AND tipodocumento_id = ISNULL(@tipodocumento_id, tipodocumento_id)
+      AND nombretipodocumento = ISNULL(@nombretipodocumento, nombretipodocumento) AND genero_id = ISNULL(@genero_id, genero_id)
+      AND nombregenero = ISNULL(@nombregenero, nombregenero) AND estadocivil_id = ISNULL(@estadocivil_id, estadocivil_id)
+      AND nombreestadocivil = ISNULL(@nombreestadocivil, nombreestadocivil);
+END;
+GO
+
+CREATE PROCEDURE S_Contacto
+    @contactoid int = null, @contacto varchar(256) = null, @tipocontacto_id int = null, @nombretipocontacto varchar(128) = null, @persona_id int = null, @nombrepersona varchar(128) = null, @apellidopersona varchar(128) = null
+AS BEGIN
+    SELECT contactoid, contacto, tipocontacto_id, nombretipocontacto, persona_id, nombrepersona, apellidopersona FROM vContacto
+    WHERE contactoid = ISNULL(@contactoid, contactoid) AND contacto = ISNULL(@contacto, contacto) AND tipocontacto_id = ISNULL(@tipocontacto_id, tipocontacto_id)
+      AND nombretipocontacto = ISNULL(@nombretipocontacto, nombretipocontacto) AND persona_id = ISNULL(@persona_id, persona_id)
+      AND nombrepersona = ISNULL(@nombrepersona, nombrepersona) AND apellidopersona = ISNULL(@apellidopersona, apellidopersona);
+END;
+GO
+
+CREATE PROCEDURE S_Domicilio
+    @domicilioid int = null, @direccion varchar(256) = null, @codpos varchar(16) = null, @localidad_id int = null, @nombrelocalidad varchar(128) = null, @provincia_id int = null, @nombreprovincia varchar(128) = null, @pais_id int = null, @nombrepais varchar(128) = null
+AS BEGIN
+    SELECT domicilioid, direccion, codpos, localidad_id, nombrelocalidad, provincia_id, nombreprovincia, pais_id, nombrepais FROM vDomicilio
+    WHERE domicilioid = ISNULL(@domicilioid, domicilioid) AND direccion = ISNULL(@direccion, direccion) AND codpos = ISNULL(@codpos, codpos)
+      AND localidad_id = ISNULL(@localidad_id, localidad_id) AND nombrelocalidad = ISNULL(@nombrelocalidad, nombrelocalidad)
+      AND provincia_id = ISNULL(@provincia_id, provincia_id) AND nombreprovincia = ISNULL(@nombreprovincia, nombreprovincia)
+      AND pais_id = ISNULL(@pais_id, pais_id) AND nombrepais = ISNULL(@nombrepais, nombrepais);
+END;
+GO
+
+CREATE PROCEDURE S_DomicilioPersona
+    @domiciliopersonaid int = null, @tipodomicilio_id int = null, @nombretipodomicilio varchar(128) = null, @persona_id int = null, @nombrepersona varchar(128) = null, @apellidopersona varchar(128) = null, @domicilio_id int = null, @direcciondomicilio varchar(256) = null, @nombrelocalidad varchar(128) = null
+AS BEGIN
+    SELECT domiciliopersonaid, tipodomicilio_id, nombretipodomicilio, persona_id, nombrepersona, apellidopersona, domicilio_id, direcciondomicilio, nombrelocalidad FROM vDomicilioPersona
+    WHERE domiciliopersonaid = ISNULL(@domiciliopersonaid, domiciliopersonaid) AND tipodomicilio_id = ISNULL(@tipodomicilio_id, tipodomicilio_id)
+      AND nombretipodomicilio = ISNULL(@nombretipodomicilio, nombretipodomicilio) AND persona_id = ISNULL(@persona_id, persona_id)
+      AND nombrepersona = ISNULL(@nombrepersona, nombrepersona) AND apellidopersona = ISNULL(@apellidopersona, apellidopersona)
+      AND domicilio_id = ISNULL(@domicilio_id, domicilio_id) AND direcciondomicilio = ISNULL(@direcciondomicilio, direcciondomicilio)
+      AND nombrelocalidad = ISNULL(@nombrelocalidad, nombrelocalidad);
+END;
+GO
+
+-- ======================================================================
+-- 7. INSERCIÓN DE DATOS INICIALES (LATAM, Géneros, Docs)
+-- ======================================================================
+BEGIN
+	DECLARE @id INT
+    
+    -- Insertar países latinoamérica usando los I_ recién creados
+	EXEC I_Pais @nombre='Argentina', @id=@id OUTPUT;
+	EXEC I_Pais @nombre='Bolivia', @id=@id OUTPUT;
+	EXEC I_Pais @nombre='Brasil', @id=@id OUTPUT;
+	EXEC I_Pais @nombre='Chile', @id=@id OUTPUT;
+	EXEC I_Pais @nombre='Colombia', @id=@id OUTPUT;
+	EXEC I_Pais @nombre='Costa Rica', @id=@id OUTPUT;
+	EXEC I_Pais @nombre='Cuba', @id=@id OUTPUT;
+	EXEC I_Pais @nombre='Ecuador', @id=@id OUTPUT;
+	EXEC I_Pais @nombre='El Salvador', @id=@id OUTPUT;
+	EXEC I_Pais @nombre='Guatemala', @id=@id OUTPUT;
+	EXEC I_Pais @nombre='Honduras', @id=@id OUTPUT;
+	EXEC I_Pais @nombre='México', @id=@id OUTPUT;
+	EXEC I_Pais @nombre='Nicaragua', @id=@id OUTPUT;
+	EXEC I_Pais @nombre='Panamá', @id=@id OUTPUT;
+	EXEC I_Pais @nombre='Paraguay', @id=@id OUTPUT;
+	EXEC I_Pais @nombre='Perú', @id=@id OUTPUT;
+	EXEC I_Pais @nombre='República Dominicana', @id=@id OUTPUT;
+	EXEC I_Pais @nombre='Uruguay', @id=@id OUTPUT;
+	EXEC I_Pais @nombre='Venezuela', @id=@id OUTPUT;
+    
+    -- Insertar géneros
+	EXEC I_Genero @nombre='Masculino', @id=@id OUTPUT;
+	EXEC I_Genero @nombre='Femenino', @id=@id OUTPUT;
+	EXEC I_Genero @nombre='Otro', @id=@id OUTPUT;
+    
+    -- Insertar tipos de documento
+	EXEC I_TipoDocumento @pais_id=1, @nombre='DNI', @id=@id OUTPUT;
+	EXEC I_TipoDocumento @pais_id=1, @nombre='Pasaporte', @id=@id OUTPUT;
+	EXEC I_TipoDocumento @pais_id=1, @nombre='Cedula', @id=@id OUTPUT;
+END;
+GO
+
+USE [Generics];
+GO
+
+BEGIN
+	DECLARE @id INT;
+
+    -- ======================================================================
+    -- 1. PROVINCIAS (Asociadas a Argentina, asumiendo Pais_ID = 1)
+    -- ======================================================================
+	EXEC I_Provincia @NOMBRE = 'Buenos Aires', @PAIS_ID = 1, @ID = @id OUTPUT;
+	EXEC I_Provincia @NOMBRE = 'Santa Fe', @PAIS_ID = 1, @ID = @id OUTPUT;
+	EXEC I_Provincia @NOMBRE = 'Entre Ríos', @PAIS_ID = 1, @ID = @id OUTPUT;
+	EXEC I_Provincia @NOMBRE = 'Córdoba', @PAIS_ID = 1, @ID = @id OUTPUT;
+	EXEC I_Provincia @NOMBRE = 'Mendoza', @PAIS_ID = 1, @ID = @id OUTPUT;
+	EXEC I_Provincia @NOMBRE = 'Tucumán', @PAIS_ID = 1, @ID = @id OUTPUT;
+	EXEC I_Provincia @NOMBRE = 'Salta', @PAIS_ID = 1, @ID = @id OUTPUT;
+	EXEC I_Provincia @NOMBRE = 'Misiones', @PAIS_ID = 1, @ID = @id OUTPUT;
+	EXEC I_Provincia @NOMBRE = 'Chaco', @PAIS_ID = 1, @ID = @id OUTPUT;
+	EXEC I_Provincia @NOMBRE = 'Corrientes', @PAIS_ID = 1, @ID = @id OUTPUT; 
+
+    -- ======================================================================
+    -- 2. LOCALIDADES (Centradas en San Nicolás y zona de influencia)
+    -- Asumiendo Provincia_ID 1 = Buenos Aires, Provincia_ID 2 = Santa Fe
+    -- ======================================================================
+	EXEC I_Localidad @NOMBRE = 'San Nicolás de los Arroyos', @PROVINCIA_ID = 1, @ID = @id OUTPUT;
+	EXEC I_Localidad @NOMBRE = 'La Emilia', @PROVINCIA_ID = 1, @ID = @id OUTPUT;
+	EXEC I_Localidad @NOMBRE = 'Campos Salles', @PROVINCIA_ID = 1, @ID = @id OUTPUT;
+	EXEC I_Localidad @NOMBRE = 'General Rojo', @PROVINCIA_ID = 1, @ID = @id OUTPUT;
+	EXEC I_Localidad @NOMBRE = 'Conesa', @PROVINCIA_ID = 1, @ID = @id OUTPUT;
+	EXEC I_Localidad @NOMBRE = 'Erézcano', @PROVINCIA_ID = 1, @ID = @id OUTPUT;
+	EXEC I_Localidad @NOMBRE = 'Ramallo', @PROVINCIA_ID = 1, @ID = @id OUTPUT;
+	EXEC I_Localidad @NOMBRE = 'Villa Ramallo', @PROVINCIA_ID = 1, @ID = @id OUTPUT;
+	EXEC I_Localidad @NOMBRE = 'Pérez Millán', @PROVINCIA_ID = 1, @ID = @id OUTPUT;
+	EXEC I_Localidad @NOMBRE = 'Rosario', @PROVINCIA_ID = 2, @ID = @id OUTPUT; 
+
+    -- ======================================================================
+    -- 3. ESTADOS CIVILES
+    -- ======================================================================
+	EXEC I_EstadoCivil @NOMBRE = 'Soltero/a', @ID = @id OUTPUT;
+	EXEC I_EstadoCivil @NOMBRE = 'Casado/a', @ID = @id OUTPUT;
+	EXEC I_EstadoCivil @NOMBRE = 'Divorciado/a', @ID = @id OUTPUT;
+	EXEC I_EstadoCivil @NOMBRE = 'Viudo/a', @ID = @id OUTPUT;
+	EXEC I_EstadoCivil @NOMBRE = 'Unión Convivencial', @ID = @id OUTPUT;
+	EXEC I_EstadoCivil @NOMBRE = 'Separado/a de hecho', @ID = @id OUTPUT;
+	EXEC I_EstadoCivil @NOMBRE = 'Separado/a legalmente', @ID = @id OUTPUT;
+	EXEC I_EstadoCivil @NOMBRE = 'Anulado', @ID = @id OUTPUT;
+	EXEC I_EstadoCivil @NOMBRE = 'En trámite', @ID = @id OUTPUT;
+	EXEC I_EstadoCivil @NOMBRE = 'No Especificado', @ID = @id OUTPUT;
+
+    -- ======================================================================
+    -- 4. TIPOS DE CONTACTO
+    -- ======================================================================
+	EXEC I_TipoContacto @NOMBRE = 'Celular Principal', @ID = @id OUTPUT;
+	EXEC I_TipoContacto @NOMBRE = 'Celular Secundario', @ID = @id OUTPUT;
+	EXEC I_TipoContacto @NOMBRE = 'Teléfono Fijo', @ID = @id OUTPUT;
+	EXEC I_TipoContacto @NOMBRE = 'Email Personal', @ID = @id OUTPUT;
+	EXEC I_TipoContacto @NOMBRE = 'Email Laboral', @ID = @id OUTPUT;
+	EXEC I_TipoContacto @NOMBRE = 'WhatsApp', @ID = @id OUTPUT;
+	EXEC I_TipoContacto @NOMBRE = 'LinkedIn', @ID = @id OUTPUT;
+	EXEC I_TipoContacto @NOMBRE = 'Instagram', @ID = @id OUTPUT;
+	EXEC I_TipoContacto @NOMBRE = 'Facebook', @ID = @id OUTPUT;
+	EXEC I_TipoContacto @NOMBRE = 'Telegram', @ID = @id OUTPUT;
+
+    -- ======================================================================
+    -- 5. TIPOS DE DOMICILIO
+    -- ======================================================================
+	EXEC I_TipoDomicilio @NOMBRE = 'Principal', @ID = @id OUTPUT;
+	EXEC I_TipoDomicilio @NOMBRE = 'Laboral', @ID = @id OUTPUT;
+	EXEC I_TipoDomicilio @NOMBRE = 'Fiscal', @ID = @id OUTPUT;
+	EXEC I_TipoDomicilio @NOMBRE = 'Comercial', @ID = @id OUTPUT;
+	EXEC I_TipoDomicilio @NOMBRE = 'Entrega', @ID = @id OUTPUT;
+	EXEC I_TipoDomicilio @NOMBRE = 'Facturación', @ID = @id OUTPUT;
+	EXEC I_TipoDomicilio @NOMBRE = 'Temporal', @ID = @id OUTPUT;
+	EXEC I_TipoDomicilio @NOMBRE = 'Veraneo', @ID = @id OUTPUT;
+	EXEC I_TipoDomicilio @NOMBRE = 'Correspondencia', @ID = @id OUTPUT;
+	EXEC I_TipoDomicilio @NOMBRE = 'Alternativo', @ID = @id OUTPUT;
+
+    -- ======================================================================
+    -- 6. PERSONAS 
+    -- Géneros(1=Masc, 2=Fem, 3=Otro) | Docs(1=DNI, 2=Pasaporte, 3=Cédula)
+    -- ======================================================================
+	EXEC I_Persona @NOMBRE = 'Juan', @APELLIDO = 'Pérez', @DOCUMENTO = '35123456', @FNACTO = '1990-05-14', @ESTADOCIVIL_ID = 1, @GENERO_ID = 1, @TIPODOCUMENTO_ID = 1, @ID = @id OUTPUT;
+	EXEC I_Persona @NOMBRE = 'María', @APELLIDO = 'Gómez', @DOCUMENTO = '28987654', @FNACTO = '1981-11-23', @ESTADOCIVIL_ID = 2, @GENERO_ID = 2, @TIPODOCUMENTO_ID = 1, @ID = @id OUTPUT;
+	EXEC I_Persona @NOMBRE = 'Carlos', @APELLIDO = 'López', @DOCUMENTO = '20351234567', @FNACTO = '1990-05-14', @ESTADOCIVIL_ID = 1, @GENERO_ID = 1, @TIPODOCUMENTO_ID = 3, @ID = @id OUTPUT;
+	EXEC I_Persona @NOMBRE = 'Ana', @APELLIDO = 'Martínez', @DOCUMENTO = '40111222', @FNACTO = '1998-02-10', @ESTADOCIVIL_ID = 5, @GENERO_ID = 2, @TIPODOCUMENTO_ID = 1, @ID = @id OUTPUT;
+	EXEC I_Persona @NOMBRE = 'Alex', @APELLIDO = 'Fernández', @DOCUMENTO = '38444555', @FNACTO = '1994-08-30', @ESTADOCIVIL_ID = 1, @GENERO_ID = 3, @TIPODOCUMENTO_ID = 1, @ID = @id OUTPUT;
+	EXEC I_Persona @NOMBRE = 'Roberto', @APELLIDO = 'Sánchez', @DOCUMENTO = '12345678', @FNACTO = '1956-07-15', @ESTADOCIVIL_ID = 4, @GENERO_ID = 1, @TIPODOCUMENTO_ID = 2, @ID = @id OUTPUT;
+	EXEC I_Persona @NOMBRE = 'Lucía', @APELLIDO = 'Díaz', @DOCUMENTO = '32888999', @FNACTO = '1987-12-05', @ESTADOCIVIL_ID = 3, @GENERO_ID = 2, @TIPODOCUMENTO_ID = 1, @ID = @id OUTPUT;
+	EXEC I_Persona @NOMBRE = 'Miguel', @APELLIDO = 'Torres', @DOCUMENTO = '27333444', @FNACTO = '1979-04-18', @ESTADOCIVIL_ID = 2, @GENERO_ID = 1, @TIPODOCUMENTO_ID = 1, @ID = @id OUTPUT;
+	EXEC I_Persona @NOMBRE = 'Sofía', @APELLIDO = 'Ruiz', @DOCUMENTO = '42666777', @FNACTO = '2000-09-22', @ESTADOCIVIL_ID = 1, @GENERO_ID = 2, @TIPODOCUMENTO_ID = 1, @ID = @id OUTPUT;
+	EXEC I_Persona @NOMBRE = 'Jorge', @APELLIDO = 'Romero', @DOCUMENTO = '23111222339', @FNACTO = '1985-01-29', @ESTADOCIVIL_ID = 5, @GENERO_ID = 1, @TIPODOCUMENTO_ID = 2, @ID = @id OUTPUT;
+
+    -- ======================================================================
+    -- 7. CONTACTOS (Prefijos reales de San Nicolás: 3364 y 0336)
+    -- ======================================================================
+	EXEC I_Contacto @PERSONA_ID = 1, @TIPOCONTACTO_ID = 1, @CONTACTO = '3364-123456', @ID = @id OUTPUT;
+	EXEC I_Contacto @PERSONA_ID = 2, @TIPOCONTACTO_ID = 3, @CONTACTO = '0336-4420000', @ID = @id OUTPUT;
+	EXEC I_Contacto @PERSONA_ID = 3, @TIPOCONTACTO_ID = 4, @CONTACTO = 'carlos.lopez@email.com', @ID = @id OUTPUT;
+	EXEC I_Contacto @PERSONA_ID = 4, @TIPOCONTACTO_ID = 6, @CONTACTO = '3364-987654', @ID = @id OUTPUT;
+	EXEC I_Contacto @PERSONA_ID = 5, @TIPOCONTACTO_ID = 8, @CONTACTO = '@alex_f_sn', @ID = @id OUTPUT;
+	EXEC I_Contacto @PERSONA_ID = 6, @TIPOCONTACTO_ID = 3, @CONTACTO = '0336-4431111', @ID = @id OUTPUT;
+	EXEC I_Contacto @PERSONA_ID = 7, @TIPOCONTACTO_ID = 1, @CONTACTO = '3364-555666', @ID = @id OUTPUT;
+	EXEC I_Contacto @PERSONA_ID = 8, @TIPOCONTACTO_ID = 5, @CONTACTO = 'mtorres@empresa-nicolena.com.ar', @ID = @id OUTPUT;
+	EXEC I_Contacto @PERSONA_ID = 9, @TIPOCONTACTO_ID = 6, @CONTACTO = '341-2223334', @ID = @id OUTPUT; 
+	EXEC I_Contacto @PERSONA_ID = 10, @TIPOCONTACTO_ID = 1, @CONTACTO = '3364-777888', @ID = @id OUTPUT;
+
+    -- ======================================================================
+    -- 8. DOMICILIOS (Calles de San Nicolás y zona)
+    -- ======================================================================
+	EXEC I_Domicilio @DIRECCION = 'Mitre 123', @CODPOS = '2900', @LOCALIDAD_ID = 1, @ID = @id OUTPUT;
+	EXEC I_Domicilio @DIRECCION = 'Nación 456', @CODPOS = '2900', @LOCALIDAD_ID = 1, @ID = @id OUTPUT;
+	EXEC I_Domicilio @DIRECCION = 'Av. Pte. Perón 1500', @CODPOS = '2900', @LOCALIDAD_ID = 1, @ID = @id OUTPUT;
+	EXEC I_Domicilio @DIRECCION = 'Quintana 80', @CODPOS = '2901', @LOCALIDAD_ID = 2, @ID = @id OUTPUT;
+	EXEC I_Domicilio @DIRECCION = 'Ruta 188 Km 9', @CODPOS = '2900', @LOCALIDAD_ID = 3, @ID = @id OUTPUT;
+	EXEC I_Domicilio @DIRECCION = 'San Martín 200', @CODPOS = '2901', @LOCALIDAD_ID = 4, @ID = @id OUTPUT;
+	EXEC I_Domicilio @DIRECCION = 'Belgrano S/N', @CODPOS = '2907', @LOCALIDAD_ID = 5, @ID = @id OUTPUT;
+	EXEC I_Domicilio @DIRECCION = 'Av. San Martín 850', @CODPOS = '2914', @LOCALIDAD_ID = 8, @ID = @id OUTPUT;
+	EXEC I_Domicilio @DIRECCION = 'Moreno 1200', @CODPOS = '2915', @LOCALIDAD_ID = 7, @ID = @id OUTPUT;
+	EXEC I_Domicilio @DIRECCION = 'Av. Pellegrini 1500', @CODPOS = '2000', @LOCALIDAD_ID = 10, @ID = @id OUTPUT;
+
+    -- ======================================================================
+    -- 9. DOMICILIO PERSONA (Cruces N a N)
+    -- ======================================================================
+	EXEC I_DomicilioPersona @PERSONA_ID = 1, @DOMICILIO_ID = 1, @TIPODOMICILIO_ID = 1, @ID = @id OUTPUT;
+	EXEC I_DomicilioPersona @PERSONA_ID = 2, @DOMICILIO_ID = 2, @TIPODOMICILIO_ID = 1, @ID = @id OUTPUT;
+	EXEC I_DomicilioPersona @PERSONA_ID = 3, @DOMICILIO_ID = 3, @TIPODOMICILIO_ID = 4, @ID = @id OUTPUT;
+	EXEC I_DomicilioPersona @PERSONA_ID = 4, @DOMICILIO_ID = 4, @TIPODOMICILIO_ID = 1, @ID = @id OUTPUT;
+	EXEC I_DomicilioPersona @PERSONA_ID = 5, @DOMICILIO_ID = 5, @TIPODOMICILIO_ID = 1, @ID = @id OUTPUT;
+	EXEC I_DomicilioPersona @PERSONA_ID = 6, @DOMICILIO_ID = 6, @TIPODOMICILIO_ID = 1, @ID = @id OUTPUT;
+	EXEC I_DomicilioPersona @PERSONA_ID = 7, @DOMICILIO_ID = 7, @TIPODOMICILIO_ID = 8, @ID = @id OUTPUT;
+	EXEC I_DomicilioPersona @PERSONA_ID = 8, @DOMICILIO_ID = 8, @TIPODOMICILIO_ID = 2, @ID = @id OUTPUT;
+	EXEC I_DomicilioPersona @PERSONA_ID = 9, @DOMICILIO_ID = 9, @TIPODOMICILIO_ID = 1, @ID = @id OUTPUT;
+	EXEC I_DomicilioPersona @PERSONA_ID = 10, @DOMICILIO_ID = 10, @TIPODOMICILIO_ID = 1, @ID = @id OUTPUT;
+END;
+GO
+
+USE [Generics];
+GO
+
+PRINT '--- 1. PROBANDO BÚSQUEDAS (SELECTS) ---';
+
+-- Trae todos los países sin filtrar
+EXEC S_Pais;
+
+-- Trae solo las provincias que pertenecen a Argentina
+EXEC S_Provincia @nombrepais = 'Argentina';
+
+-- Busca una localidad específica por nombre
+EXEC S_Localidad @localidad = 'San Nicolás de los Arroyos';
+
+-- Busca un estado civil específico
+EXEC S_EstadoCivil @estadocivil = 'Soltero/a';
+
+-- Trae todos los géneros
+EXEC S_Genero;
+
+-- Busca un tipo de contacto específico
+EXEC S_TipoContacto @tipocontacto = 'WhatsApp';
+
+-- Busca un tipo de domicilio
+EXEC S_TipoDomicilio @tipodomicilio = 'Principal';
+
+-- Trae el tipo de documento "DNI"
+EXEC S_TipoDocumento @nombre = 'DNI';
+
+-- Busca a una persona específica por Nombre y Apellido
+EXEC S_Persona @nombre = 'Juan', @apellido = 'Pérez';
+
+-- Trae los contactos de una persona llamada "Juan"
+EXEC S_Contacto @nombrepersona = 'Juan';
+
+-- Busca todos los domicilios que tengan el Código Postal 2900 (San Nicolás)
+EXEC S_Domicilio @codpos = '2900';
+
+-- Trae las asociaciones de personas con domicilios en "La Emilia"
+EXEC S_DomicilioPersona @nombrelocalidad = 'La Emilia';
+GO
+
+USE [Generics];
+GO
+
+PRINT '--- 2. PROBANDO INSERCIÓN, ACTUALIZACIÓN Y BORRADO ---';
+
+DECLARE @TestID INT;
+
+-- A) INSERTAR (Create)
+-- Ejecutamos el I_ y capturamos el ID autogenerado
+EXEC I_EstadoCivil @NOMBRE = 'Estado de Prueba', @ID = @TestID OUTPUT;
+
+PRINT 'Se insertó el registro. Verificando...';
+EXEC S_EstadoCivil @estadocivilid = @TestID;
+
+
+-- B) ACTUALIZAR (Update)
+-- Cambiamos el nombre usando el U_ y el ID que capturamos
+EXEC U_EstadoCivil @ID = @TestID, @NOMBRE = 'Estado Actualizado';
+
+PRINT 'Se actualizó el registro. Verificando...';
+EXEC S_EstadoCivil @estadocivilid = @TestID;
+
+
+-- C) ELIMINAR (Delete)
+-- Borramos el registro usando el D_
+EXEC D_EstadoCivil @ID = @TestID;
+
+PRINT 'Se eliminó el registro. Verificando (debería salir vacío)...';
+EXEC S_EstadoCivil @estadocivilid = @TestID;
+GO
